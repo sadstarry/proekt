@@ -27,12 +27,12 @@
                 <Button Margin="5" x:Name="BtnExit" Width="150" HorizontalAlignment="Right" Click="BtnExit_Click">Выйти из аккаунта</Button>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,35,0,0">
-                <Button x:Name="BtnOrders">Заказы</Button>
+                <Button x:Name="BtnOrders" Click="BtnOrders_Click">Заказы</Button>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="22,0,23,384">
                 <Image Source="..\..\Resurs\logo.png" Height="66" Width="80"></Image>
             </StackPanel>
-            <Frame x:Name="MyFrame" Grid.Column="1" Grid.RowSpan="2" Margin="0,35,0,0"/>
+            <!-- <Frame x:Name="MyFrame" Grid.Column="1" Grid.RowSpan="2" Margin="0,35,0,0"/> -->
         </Grid>
     </Grid>
 </Page>

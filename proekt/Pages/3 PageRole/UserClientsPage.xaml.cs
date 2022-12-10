@@ -23,9 +23,15 @@ namespace proekt.Pages._3_PageRole
         public UserClientsPage()
         {
             InitializeComponent();
+            MyFrame.Navigate(new UserPage.ProductList());
         }
 
-        private void BtnStory_Click(object sender, RoutedEventArgs e)
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Auth());
+        }
+
+        private void BtnProduct_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -35,12 +41,7 @@ namespace proekt.Pages._3_PageRole
 
         }
 
-        private void BtnProduct_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        private void BtnStory_Click(object sender, RoutedEventArgs e)
         {
 
         }

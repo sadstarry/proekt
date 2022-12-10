@@ -1,0 +1,122 @@
+﻿<Page x:Class="proekt.Pages._3_PageRole.UserPage.ProductList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:proekt.Pages._3_PageRole.UserPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProductList">
+
+    <Grid>
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="384*"/>
+                <RowDefinition Height="29*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Margin="0 10 0 5">Ед. изм</TextBlock>
+                    <ComboBox SelectedIndex="0" Width="80"  Margin="5 0 0 0" Height="20"  SelectionChanged="CbUnit_SelectionChanged"  x:Name="CbUnit" >
+                        <ComboBoxItem>Все</ComboBoxItem>
+                        <ComboBoxItem>Без ед.изм.</ComboBoxItem>
+                        <ComboBoxItem>кг.</ComboBoxItem>
+                        <ComboBoxItem>м.</ComboBoxItem>
+                        <ComboBoxItem>л.</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="10 10 0 5" FontFamily="Century" Width="81">Сортировать:</TextBlock>
+                    <ComboBox SelectedIndex="0" Width="47"  Margin="5 0 0 0" Height="20" SelectionChanged="CbSort_SelectionChanged"  x:Name="CbSort">
+                        <ComboBoxItem>Без сортировки</ComboBoxItem>
+                        <ComboBoxItem>Наименование</ComboBoxItem>
+                        <ComboBoxItem>Дата добавления</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBox  Margin="10 5 0 5" Height="20"  x:Name="TbSearch" TextChanged="TbSearch_TextChanged"  Width="84"   FontFamily="Bahnschrift SemiBold Condensed"></TextBox>
+                    <!--<Image Source="C:\Users\MSSI\source\repos\YP22\YP22\Resourse\лупа1.png" Height="15"></Image>-->
+                </StackPanel>
+
+                <TextBlock Margin="5 10 0 5" > Выводить по:</TextBlock>
+                <ComboBox Margin="5 0 0 5" x:Name="CbCountVisible" Width="100" Height="30" SelectedIndex="0" SelectionChanged="CbCountVisible_SelectionChanged">
+                    <ComboBoxItem>Все</ComboBoxItem>
+                    <ComboBoxItem>10</ComboBoxItem>
+                    <ComboBoxItem>50</ComboBoxItem>
+                    <ComboBoxItem>200</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <ListView x:Name="ListProduct" d:ItemsSource="{d:SampleData}" Grid.Row="1" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="{Binding borderTich}" BorderBrush="#A9808080" Padding="10" CornerRadius="5,5,5,5">
+
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Margin="8">
+                                    <Border BorderBrush="#FFCDDEDE" BorderThickness="3">
+                                        <Image Width="70" Height="70" Source="{ Binding Image }"></Image>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Grid.Row="0" Grid.Column="1">
+                                    <TextBlock Text="{Binding Name}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Width="500" Grid.Row="1" Grid.Column="1">
+
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Discription}"></TextBlock>
+
+
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock Width="71">Стоимость: </TextBlock>
+                                        <TextBlock Text="{Binding Cast}"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Width="74">В наличии: </TextBlock>
+                                        <TextBlock Text="{Binding CountID}"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Width="56">Ед. изм.: </TextBlock>
+                                        <TextBlock Text="{Binding Unit.Name}"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Width="145">Дата добавления товара: </TextBlock>
+                                        <TextBlock Text="{Binding DateAdd , StringFormat= dd.MM.yy }"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2" Grid.RowSpan="3" VerticalAlignment="Center" Margin="5">
+                                    <Button x:Name="BtnOrderAdd" Click="BtnOrderAdd_Click" Visibility="{Binding visibleBtn}">Добавить в корзину</Button>
+                                    <!-- "<TextBlock  Background="#3F1C1818" Visibility="{Binding BindingGr}" TextAlignment="Center">Нет в наличии</TextBlock> -->
+                                    <TextBlock Text="{Binding CountID.Name}"></TextBlock>
+                                    <Button x:Name="BtnReadSupplier" Click="BtnReadSupplier_Click" Margin="0 10 0 0" >Поставщики товара</Button>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="2">
+                <Button Height="20" x:Name="BtnLeft" Click="BtnLeft_Click" Margin="0 0 10 0">Left</Button>
+                <TextBlock x:Name="TxtRealCount" Margin="0 0 10 0"></TextBlock>
+                <TextBlock Margin="0 0 10 0" Width="14"> из </TextBlock>
+                <TextBlock x:Name="TxtMaxCount" Margin="0 0 10 0"></TextBlock>
+                <Button Height="20" x:Name="BtnRight" Click="BtnRight_Click">Right</Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

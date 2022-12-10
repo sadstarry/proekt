@@ -24,5 +24,15 @@ namespace proekt.Pages._3_PageRole
         {
             InitializeComponent();
         }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Auth());
+        }
+
+        private void BtnOrders_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

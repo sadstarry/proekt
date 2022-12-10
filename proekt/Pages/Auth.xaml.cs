@@ -19,7 +19,6 @@ using System.Windows.Shapes;
 using System.Timers;
 using System.Windows.Threading;
 
-
 namespace proekt.Pages
 {
     /// <summary>
@@ -64,6 +63,7 @@ namespace proekt.Pages
             string password = TbPassword.Text.Trim();
             bool SDLogin = SaveDataLogin.IsChecked.Value;
 
+
             if (login.Length == 0 && password.Length == 0)
             {
                 MessageBox.Show("Заполните поля!");  
@@ -100,8 +100,22 @@ namespace proekt.Pages
                         File.Delete(path + "dsslogin.txt");
                     }
                     File.Delete(path + "ddsCountAuth.txt");
-                    NavigationService.Navigate(new Sk());
 
+                    if (Dbconnect.db.User.ToList().Find(x => x.Login == login).Roleid == 2){
+                        NavigationService.Navigate(new _3_PageRole.AdminClientsPage());
+                    }
+                    else if (Dbconnect.db.User.ToList().Find(x => x.Login == login).Roleid == 3)
+                    {
+                        NavigationService.Navigate(new _3_PageRole.ManagerClientPage());
+                    }
+                    else if (Dbconnect.db.User.ToList().Find(x => x.Login == login).Roleid == 4)
+                    {
+                        NavigationService.Navigate(new _3_PageRole.SupplierClientsPage());
+                    }
+                    else
+                    {
+                        NavigationService.Navigate(new _3_PageRole.UserClientsPage());
+                    }
                 }
             }
         }

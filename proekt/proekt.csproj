@@ -64,38 +64,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\Count.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Components\Country.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\Dbconnect.cs" />
+    <Compile Include="Components\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Components\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Components\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Components\Order.cs">
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\3 PageRole\AdminClientsPage.xaml.cs">
-      <DependentUpon>AdminClientsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\3 PageRole\ManagerClientPage.xaml.cs">
-      <DependentUpon>ManagerClientPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\3 PageRole\SupplierClientsPage.xaml.cs">
-      <DependentUpon>SupplierClientsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\3 PageRole\UserClientsPage.xaml.cs">
-      <DependentUpon>UserClientsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\3 PageRole\UserPage\ClientProduct.xaml.cs">
-      <DependentUpon>ClientProduct.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Auth.xaml.cs">
-      <DependentUpon>Auth.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\RagPage.xaml.cs">
-      <DependentUpon>RagPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -113,6 +105,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\Role.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Components\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Components\sp_helpdiagrams_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\Status.cs">
@@ -133,6 +131,27 @@
     <Compile Include="Components\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\3 PageRole\AdminClientsPage.xaml.cs">
+      <DependentUpon>AdminClientsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\3 PageRole\ManagerClientPage.xaml.cs">
+      <DependentUpon>ManagerClientPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\3 PageRole\SupplierClientsPage.xaml.cs">
+      <DependentUpon>SupplierClientsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\3 PageRole\UserClientsPage.xaml.cs">
+      <DependentUpon>UserClientsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\3 PageRole\UserPage\ProductList.xaml.cs">
+      <DependentUpon>ProductList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Auth.xaml.cs">
+      <DependentUpon>Auth.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RagPage.xaml.cs">
+      <DependentUpon>RagPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -146,22 +165,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\3 PageRole\AdminClientsPage.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\3 PageRole\ManagerClientPage.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\3 PageRole\SupplierClientsPage.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\3 PageRole\UserClientsPage.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\3 PageRole\UserPage\ClientProduct.xaml">
+    <Page Include="Pages\3 PageRole\UserPage\ProductList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -175,16 +194,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Components\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -219,25 +228,27 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Components\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
-    <Content Include="Components\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
     <Resource Include="Resurs\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Pages\3 PageRole\AdminPage\" />
     <Folder Include="Pages\3 PageRole\ManagerPage\" />
     <Folder Include="Pages\3 PageRole\SupplierPage\" />
-    <Folder Include="Pages\AdminPage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Components\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Components\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

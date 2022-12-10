@@ -28,9 +28,11 @@ namespace proekt.Components
         public byte[] Photo { get; set; }
         public Nullable<System.DateTime> DateAdd { get; set; }
         public Nullable<int> UnitId { get; set; }
-        public Nullable<int> Count { get; set; }
         public Nullable<decimal> Cast { get; set; }
+        public Nullable<int> CountID { get; set; }
+        public Nullable<int> Count { get; set; }
     
+        public virtual Count Count1 { get; set; }
         public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductCountry> ProductCountry { get; set; }

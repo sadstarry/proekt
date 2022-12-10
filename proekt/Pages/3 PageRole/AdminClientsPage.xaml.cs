@@ -27,7 +27,7 @@ namespace proekt.Pages._3_PageRole
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Auth());
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)

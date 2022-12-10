@@ -59,7 +59,8 @@ namespace proekt.Pages
                         Surname = Surname,
                         Patronymic = Patronymic,
                         Phone = Phone,
-                        Email = Email
+                        Email = Email,
+                        Roleid = 1
                     });
                     Dbconnect.db.SaveChanges();
                     MessageBox.Show("Регистрация прошла успешно");

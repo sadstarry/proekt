@@ -1,5 +1,7 @@
-﻿using System;
+﻿using proekt.Components;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,18 +18,23 @@ using System.Windows.Shapes;
 namespace proekt.Pages._3_PageRole.UserPage
 {
     /// <summary>
-    /// Логика взаимодействия для ClientProduct.xaml
+    /// Логика взаимодействия для ProductList.xaml
     /// </summary>
-    public partial class ClientProduct : Page
+    public partial class ProductList : Page
     {
-        public ClientProduct()
+        public ProductList()
         {
             InitializeComponent();
+            ListProduct.ItemsSource = Dbconnect.db.Product.ToList();
+            //var produkt = Dbconnect.db.Product.ToList().FindLast(x => x.ID ==);
+            //MessageBox.Show(Convert.ToString(produkt.ID));
+            //TxtRealCount.Text = "1";
+            //TxtMaxCount.Text = ;
         }
 
         private void CbUnit_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
         }
 
         private void CbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -56,6 +63,16 @@ namespace proekt.Pages._3_PageRole.UserPage
         }
 
         private void BtnReadSupplier_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnLeft_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnRight_Click(object sender, RoutedEventArgs e)
         {
 
         }
