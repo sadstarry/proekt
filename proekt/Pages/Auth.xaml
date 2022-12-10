@@ -8,27 +8,35 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Auth">
 
-    <Grid Background="White">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid Background="#d1eefc">
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" >
+            <StackPanel Height="74" Margin="5" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <TextBlock TextAlignment="Center" Width="193" FontSize="22" VerticalAlignment="Center" Height="28"><Run Text="Авторизация" FontFamily="Comic Sans MS" FontSize="18"/></TextBlock>
+                <Image Source="..\Resurs\logo.png" Height="70" Width="70" Margin="2"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="15">
-                <TextBlock x:Name="TextBlock" Width="250" Text="" TextAlignment="Center"/>
+                <TextBlock x:Name="TextBlock" Width="250" Text="" TextAlignment="Center" FontWeight="Bold" FontFamily="Comic Sans MS" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <TextBlock Width="59"><Run Text="Login"/></TextBlock>
+                <TextBlock Width="59" FontFamily="Comic Sans MS"><Run Text="Login"/></TextBlock>
                 <TextBox x:Name="TbLogin" RenderTransformOrigin="0.5,0.5" Width="209">
                 </TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <TextBlock Width="59"><Run Text="Password"/></TextBlock>
+                <TextBlock Width="59" FontFamily="Comic Sans MS"><Run Text="Password"/></TextBlock>
                 <TextBox x:Name="TbPassword" Width="209"></TextBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name ="AuthClickBtn" Click="auth_click" Content="Authentikos" Width="169"/>
-                <Button x:Name ="RegAuthClickBtn" Click="AuthReg_click" Content="Registations" Width="169"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button x:Name ="AuthClickBtn" Click="auth_click" Content="Authentikos" Width="169" FontFamily="Comic Sans MS"/>
+                <Button x:Name ="RegAuthClickBtn" Click="AuthReg_click" Content="Registations" Width="169" FontFamily="Comic Sans MS"/>
             </StackPanel>
             <StackPanel  Margin="5">
-                <CheckBox x:Name="SaveDataLogin" IsChecked="False" Content="Save data" HorizontalAlignment="Center"/>
+                <CheckBox x:Name="SaveDataLogin" IsChecked="False" Content="Save data" HorizontalAlignment="Center" FontFamily="Comic Sans MS"/>
             </StackPanel>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <TextBlock FontSize="11" FontFamily="Comic Sans MS"> @sadstarry 2022</TextBlock>
         </StackPanel>
     </Grid>
 </Page>

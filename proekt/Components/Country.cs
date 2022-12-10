@@ -17,13 +17,13 @@ namespace proekt.Components
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Country()
         {
-            this.ProductCountry = new HashSet<ProductCountry>();
+            this.Supply = new HashSet<Supply>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductCountry> ProductCountry { get; set; }
+        public virtual ICollection<Supply> Supply { get; set; }
     }
 }

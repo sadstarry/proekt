@@ -12,18 +12,18 @@ namespace proekt.Components
     using System;
     using System.Collections.Generic;
     
-    public partial class Supplier
+    public partial class Suppliers
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Supplier()
+        public Suppliers()
         {
-            this.ReceiptOfProduct = new HashSet<ReceiptOfProduct>();
+            this.Supply = new HashSet<Supply>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReceiptOfProduct> ReceiptOfProduct { get; set; }
+        public virtual ICollection<Supply> Supply { get; set; }
     }
 }

@@ -33,17 +33,17 @@ namespace proekt.Pages._3_PageRole
 
         private void BtnProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            MyFrame.Navigate(new UserPage.ProductList());
         }
 
         private void BtnBasket_Click(object sender, RoutedEventArgs e)
         {
-
+            MyFrame.Navigate(new UserPage.UserBacket());
         }
 
         private void BtnStory_Click(object sender, RoutedEventArgs e)
         {
-
+            MyFrame.Navigate(new UserPage.MyOrder());
         }
     }
 }

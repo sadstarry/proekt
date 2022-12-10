@@ -12,18 +12,18 @@ namespace proekt.Components
     using System;
     using System.Collections.Generic;
     
-    public partial class Count
+    public partial class StatusSupp
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Count()
+        public StatusSupp()
         {
-            this.Product = new HashSet<Product>();
+            this.Supply = new HashSet<Supply>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Product { get; set; }
+        public virtual ICollection<Supply> Supply { get; set; }
     }
 }

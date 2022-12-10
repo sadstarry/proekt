@@ -18,6 +18,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Timers;
 using System.Windows.Threading;
+using proekt.UserAuth;
+using System.Security.Cryptography.X509Certificates;
 
 namespace proekt.Pages
 {
@@ -101,7 +103,10 @@ namespace proekt.Pages
                     }
                     File.Delete(path + "ddsCountAuth.txt");
 
+                    UserAuth.UserAuth.nameuser = authUser;
+
                     if (Dbconnect.db.User.ToList().Find(x => x.Login == login).Roleid == 2){
+
                         NavigationService.Navigate(new _3_PageRole.AdminClientsPage());
                     }
                     else if (Dbconnect.db.User.ToList().Find(x => x.Login == login).Roleid == 3)
@@ -117,7 +122,7 @@ namespace proekt.Pages
                         NavigationService.Navigate(new _3_PageRole.UserClientsPage());
                     }
                 }
-            }
+            }   
         }
 
 

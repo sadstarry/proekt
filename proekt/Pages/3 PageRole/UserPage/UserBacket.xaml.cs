@@ -1,8 +1,6 @@
 ﻿using proekt.Components;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,35 +13,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using proekt.UserAuth;
 
 namespace proekt.Pages._3_PageRole.UserPage
 {
     /// <summary>
-    /// Логика взаимодействия для ProductList.xaml
+    /// Логика взаимодействия для UserBacket.xaml
     /// </summary>
-    
-    public partial class ProductList : Page
+    public partial class UserBacket : Page
     {
         int MaxCount = 0;
         int RealCount = 0;
         int ActualPages = 0;
         int OneCount = 0;
-        public ProductList()
+        public UserBacket()
         {
             InitializeComponent();
             ListProduct.ItemsSource = Dbconnect.db.Product.ToList();
             Up();
             BtnLeft.IsEnabled = false;
             BtnRight.IsEnabled = false;
+
         }
 
-        private void CbUnit_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Up();
-        }
-
-        private void addkor(int id)
+        private void kozinak()
         {
 
         }
@@ -61,6 +53,7 @@ namespace proekt.Pages._3_PageRole.UserPage
                 TxtMaxCount.Text = RealCount.ToString();
 
             }
+
 
             if (CbUnit.SelectedIndex == 1)
             {
@@ -83,7 +76,7 @@ namespace proekt.Pages._3_PageRole.UserPage
             {
                 products = products.Where(x => x.UnitId == 5).ToList();
             }
-            
+
 
 
             if (CbSort != null && CbSort.SelectedIndex == 1)
@@ -137,7 +130,12 @@ namespace proekt.Pages._3_PageRole.UserPage
 
         }
 
-        private void CbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void BntBuy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CbUnit_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Up();
         }
@@ -152,79 +150,19 @@ namespace proekt.Pages._3_PageRole.UserPage
             Up();
         }
 
-        private void ChecedMonth_Checked(object sender, RoutedEventArgs e)
+        private void CbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Up();
         }
-
-        private void BtnOrderAdd_Click(object sender, RoutedEventArgs e)
-        {
-            //
-            var BtnProd = (sender as Button).DataContext as Product;
-            List<Product> da1 = new List<Product>();
-
-            da1 = Dbconnect.db.Product.Where(x => x.ID == BtnProd.ID).ToList();
-            List<string> da2 = new List<string>();
-            //MessageBox.Show(Convert.ToString((int)da1[0].ID));
-
-            MessageBox.Show(Convert.ToString(UserAuth.UserAuth.nameuser.Login)); // yra
-        }
-
-        private void BtnReadSupplier_Click(object sender, RoutedEventArgs e)
-        {
-            var BtnProd = (sender as Button).DataContext as Product;
-            List<Supply> da1 = new List<Supply>();
-            da1 = Dbconnect.db.Supply.Where(x => x.ProductId == BtnProd.ID).ToList();
-            List<string> da2 = new List<string>();
-
-            Suppliers NameSup = new Suppliers();
-            Country countrySupp = new Country();
-
-            for (int i = 0; i < da1.Count; i++)
-            {
-                int idsup = (int)da1[i].SuppliersID;
-                int idcountry = (int)da1[i].CountryID;
-
-                NameSup = (Suppliers)Dbconnect.db.Suppliers.Where(x => x.ID == idsup).FirstOrDefault();
-                countrySupp = (Country)Dbconnect.db.Country.Where(x => x.ID == idcountry).FirstOrDefault();
-
-                da2.Add(NameSup.Name.ToString());
-                da2.Add(countrySupp.Name.ToString());
-            }
-            da2 = da2.Distinct().ToList();
-
-            if (da2.Count > 0)
-            {
-                string text1 = "Поставщики:\n";
-                string text2 = " , ";
-                for (int i = 0; i < da2.Count; i++)
-                {
-                    if (i == (da2.Count - 1))
-                    {
-                        text1 = text1 + da2[i];
-                    }
-                    else
-                    {
-                        text1 = text1 + da2[i] + text2;
-                    }
-                }
-                MessageBox.Show(text1);
-            }
-            else
-            {
-                MessageBox.Show("Поставщики данного товара не найдены");
-            }
-        }
-    
 
         private void BtnLeft_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void BtnRight_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }

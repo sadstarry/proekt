@@ -17,9 +17,8 @@ namespace proekt.Components
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.ProductCountry = new HashSet<ProductCountry>();
-            this.ProductOrder = new HashSet<ProductOrder>();
-            this.ProductSupplier = new HashSet<ProductSupplier>();
+            this.Order = new HashSet<Order>();
+            this.Supply = new HashSet<Supply>();
         }
     
         public int ID { get; set; }
@@ -27,18 +26,15 @@ namespace proekt.Components
         public string Discription { get; set; }
         public byte[] Photo { get; set; }
         public Nullable<System.DateTime> DateAdd { get; set; }
-        public Nullable<int> UnitId { get; set; }
         public Nullable<decimal> Cast { get; set; }
-        public Nullable<int> CountID { get; set; }
+        public Nullable<int> UnitId { get; set; }
         public Nullable<int> Count { get; set; }
+        public Nullable<bool> IsDelete { get; set; }
     
-        public virtual Count Count1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order { get; set; }
         public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductCountry> ProductCountry { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductOrder> ProductOrder { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductSupplier> ProductSupplier { get; set; }
+        public virtual ICollection<Supply> Supply { get; set; }
     }
 }

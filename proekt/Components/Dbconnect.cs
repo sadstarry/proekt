@@ -8,6 +8,6 @@ namespace proekt.Components
 {
     class Dbconnect
     {
-        public static PractProductEntities db = new PractProductEntities();
+        public static PractProduct1Entities db = new PractProduct1Entities();
     }
 }

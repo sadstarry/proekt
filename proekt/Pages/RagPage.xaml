@@ -8,42 +8,50 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RagPage">
 
-    <Grid Background="White">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid Background="#d1eefc">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Margin="15">
+            <StackPanel Height="74" Margin="5" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <TextBlock TextAlignment="Center" Width="193" FontSize="18" VerticalAlignment="Center" Height="28" FontFamily="Comic Sans MS"><Run Text="Регистрация" FontFamily="Bahnschrift Light"/></TextBlock>
+                <Image Source="..\..\Resurs\logo.png" Height="70" Width="70" Margin="2"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <TextBlock Width="59" ><Run Text="Login"/></TextBlock>
+                <TextBlock Width="59" FontFamily="Comic Sans MS" ><Run Text="Login"/></TextBlock>
                 <TextBox x:Name="TbLoginReg" RenderTransformOrigin="0.5,0.5" Width="209">
                 </TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <TextBlock Width="59"><Run Text="Password"/></TextBlock>
+                <TextBlock Width="59" FontFamily="Comic Sans MS"><Run Text="Password"/></TextBlock>
                 <TextBox x:Name="TbPasswordReg" Width="209"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <TextBlock Width="59"><Run Text="Name"/></TextBlock>
+                <TextBlock Width="59" FontFamily="Comic Sans MS"><Run Text="Name"/></TextBlock>
                 <TextBox x:Name="TbNameReg" Width="209" TextChanged="TbNameReg_TextChanged"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <TextBlock Width="59"><Run Text="Surname"/></TextBlock>
+                <TextBlock Width="59" FontFamily="Comic Sans MS"><Run Text="Surname"/></TextBlock>
                 <TextBox x:Name="TbSurnameReg" Width="209" TextChanged="TbSurnameReg_TextChanged"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <TextBlock Width="59"><Run Text="Patronymic"/></TextBlock>
+                <TextBlock Width="59" FontFamily="Comic Sans MS"><Run Text="Patronymic"/></TextBlock>
                 <TextBox x:Name="TbPatronymicReg" Width="209" TextChanged="TbPhoneReg_TextChanged"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <TextBlock Width="59"><Run Text="Email"/></TextBlock>
+                <TextBlock Width="59" FontFamily="Comic Sans MS"><Run Text="Email"/></TextBlock>
                 <TextBox x:Name="TbEmailReg" Width="209" TextChanged="TbEmailReg_TextChanged"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <TextBlock Width="59"><Run Text="Phone"/></TextBlock>
+                <TextBlock Width="59" FontFamily="Comic Sans MS"><Run Text="Phone"/></TextBlock>
                 <TextBox x:Name="TbPhoneReg" Width="209" TextChanged="TbPhoneReg_TextChanged"></TextBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <Button Click="Reg_click" Content="Registations " Width="169"/>
-                <Button Click="ClearReg_click" Content="Clear" Width="169"/>
-                <Button Click="NextReg_click" Content="Back" Width="169"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Click="Reg_click" Content="Registations " Width="169" FontFamily="Comic Sans MS"/>
+                <Button Click="ClearReg_click" Content="Clear" Width="169" FontFamily="Comic Sans MS"/>
+                <Button Click="NextReg_click" Content="Back" Width="169" FontFamily="Comic Sans MS"/>
             </StackPanel>
+            
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <TextBlock FontSize="11" FontFamily="Comic Sans MS"> @sadstarry 2022</TextBlock>
         </StackPanel>
     </Grid>
 </Page>

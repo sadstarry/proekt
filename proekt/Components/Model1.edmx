@@ -4,110 +4,78 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище PractProductModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Count">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
-        </EntityType>
+      <Schema Namespace="Хранилище PractProduct1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="OrderDate" Type="date" />
-          <Property Name="TotalCost" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="Employeeid" Type="int" />
-          <Property Name="Clientid" Type="int" />
-          <Property Name="Statusid" Type="int" />
+          <Property Name="ID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="DataApp" Type="date" />
+          <Property Name="StatusOrderID" Type="int" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
-          <Property Name="Discription" Type="varchar" MaxLength="50" />
-          <Property Name="Photo" Type="varbinary" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Discription" Type="varchar" MaxLength="200" />
+          <Property Name="Photo" Type="varbinary" MaxLength="200" />
           <Property Name="DateAdd" Type="date" />
-          <Property Name="UnitId" Type="int" />
           <Property Name="Cast" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="CountID" Type="int" />
+          <Property Name="UnitId" Type="int" />
           <Property Name="Count" Type="int" />
-        </EntityType>
-        <EntityType Name="ProductCountry">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Productid" Type="int" Nullable="false" />
-          <Property Name="CountryId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ProductOrder">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="OrderId" Type="int" />
-          <Property Name="ProductId" Type="int" />
-          <Property Name="Count" Type="int" />
-        </EntityType>
-        <EntityType Name="ProductSupplier">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Productid" Type="int" />
-          <Property Name="ReceiptofproductID" Type="int" />
-          <Property Name="Count" Type="int" />
-          <Property Name="PriceUnit" Type="int" />
-        </EntityType>
-        <EntityType Name="ReceiptOfProduct">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="TotalCost" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="Date" Type="date" />
-          <Property Name="StatusId" Type="int" />
-          <Property Name="Supplier" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
         </EntityType>
-        <EntityType Name="Status">
+        <EntityType Name="StatusOrder">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
         </EntityType>
-        <EntityType Name="StatusReceipt">
+        <EntityType Name="StatusSupp">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
         </EntityType>
-        <EntityType Name="Supplier">
+        <EntityType Name="Suppliers">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Supply">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="DataSupp" Type="date" />
+          <Property Name="StatusSuppId" Type="int" />
+          <Property Name="SuppliersID" Type="int" />
+          <Property Name="Count" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CountryID" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -124,31 +92,44 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Login" Type="varchar" MaxLength="200" />
-          <Property Name="Password" Type="varchar" MaxLength="200" />
+          <Property Name="Login" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Roleid" Type="int" />
           <Property Name="Surname" Type="varchar" MaxLength="200" />
           <Property Name="Name" Type="varchar" MaxLength="200" />
           <Property Name="Patronymic" Type="varchar" MaxLength="200" />
-          <Property Name="Phone" Type="nchar" MaxLength="10" />
+          <Property Name="Phone" Type="varchar" MaxLength="200" />
           <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="basket" Type="varchar" MaxLength="200" />
         </EntityType>
-        <Association Name="FK_Order_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+        <Association Name="FK_Order_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Status">
+            <Principal Role="Product">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Order">
-              <PropertyRef Name="Statusid" />
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_StatusOrder">
+          <End Role="StatusOrder" Type="Self.StatusOrder" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="StatusOrderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -160,19 +141,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Order">
-              <PropertyRef Name="Clientid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_Count">
-          <End Role="Count" Type="Self.Count" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Count">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="CountID" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -188,99 +157,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductCountry_Country">
-          <End Role="Country" Type="Self.Country" Multiplicity="1" />
-          <End Role="ProductCountry" Type="Self.ProductCountry" Multiplicity="*" />
+        <Association Name="FK_Supply_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="ProductCountry">
-              <PropertyRef Name="CountryId" />
+            <Dependent Role="Supply">
+              <PropertyRef Name="CountryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductCountry_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="ProductCountry" Type="Self.ProductCountry" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProductCountry">
-              <PropertyRef Name="Productid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductOrder_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
-          <End Role="ProductOrder" Type="Self.ProductOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProductOrder">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductOrder_Product">
+        <Association Name="FK_Supply_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="ProductOrder" Type="Self.ProductOrder" Multiplicity="*" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="ProductOrder">
+            <Dependent Role="Supply">
               <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductSupplier_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="ProductSupplier" Type="Self.ProductSupplier" Multiplicity="*" />
+        <Association Name="FK_Supply_StatusSupp">
+          <End Role="StatusSupp" Type="Self.StatusSupp" Multiplicity="0..1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
+            <Principal Role="StatusSupp">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="ProductSupplier">
-              <PropertyRef Name="Productid" />
+            <Dependent Role="Supply">
+              <PropertyRef Name="StatusSuppId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductSupplier_ReceiptOfProduct">
-          <End Role="ReceiptOfProduct" Type="Self.ReceiptOfProduct" Multiplicity="0..1" />
-          <End Role="ProductSupplier" Type="Self.ProductSupplier" Multiplicity="*" />
+        <Association Name="FK_Supply_Suppliers">
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="0..1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ReceiptOfProduct">
+            <Principal Role="Suppliers">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="ProductSupplier">
-              <PropertyRef Name="ReceiptofproductID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReceiptOfProduct_StatusReceipt1">
-          <End Role="StatusReceipt" Type="Self.StatusReceipt" Multiplicity="0..1" />
-          <End Role="ReceiptOfProduct" Type="Self.ReceiptOfProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="StatusReceipt">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ReceiptOfProduct">
-              <PropertyRef Name="StatusId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReceiptOfProduct_Supplier1">
-          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
-          <End Role="ReceiptOfProduct" Type="Self.ReceiptOfProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Supplier">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ReceiptOfProduct">
-              <PropertyRef Name="Supplier" />
+            <Dependent Role="Supply">
+              <PropertyRef Name="SuppliersID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -327,69 +248,49 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="Хранилище PractProductModelContainer">
-          <EntitySet Name="Count" EntityType="Self.Count" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="Хранилище PractProduct1ModelContainer">
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductCountry" EntityType="Self.ProductCountry" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductOrder" EntityType="Self.ProductOrder" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductSupplier" EntityType="Self.ProductSupplier" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ReceiptOfProduct" EntityType="Self.ReceiptOfProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="StatusReceipt" EntityType="Self.StatusReceipt" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusSupp" EntityType="Self.StatusSupp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suppliers" EntityType="Self.Suppliers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supply" EntityType="Self.Supply" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
-            <End Role="Status" EntitySet="Status" />
+          <AssociationSet Name="FK_Order_Product" Association="Self.FK_Order_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_StatusOrder" Association="Self.FK_Order_StatusOrder">
+            <End Role="StatusOrder" EntitySet="StatusOrder" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_Count" Association="Self.FK_Product_Count">
-            <End Role="Count" EntitySet="Count" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
           <AssociationSet Name="FK_Product_Unit" Association="Self.FK_Product_Unit">
             <End Role="Unit" EntitySet="Unit" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductCountry_Country" Association="Self.FK_ProductCountry_Country">
+          <AssociationSet Name="FK_Supply_Country" Association="Self.FK_Supply_Country">
             <End Role="Country" EntitySet="Country" />
-            <End Role="ProductCountry" EntitySet="ProductCountry" />
+            <End Role="Supply" EntitySet="Supply" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductCountry_Product" Association="Self.FK_ProductCountry_Product">
+          <AssociationSet Name="FK_Supply_Product" Association="Self.FK_Supply_Product">
             <End Role="Product" EntitySet="Product" />
-            <End Role="ProductCountry" EntitySet="ProductCountry" />
+            <End Role="Supply" EntitySet="Supply" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductOrder_Order" Association="Self.FK_ProductOrder_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="ProductOrder" EntitySet="ProductOrder" />
+          <AssociationSet Name="FK_Supply_StatusSupp" Association="Self.FK_Supply_StatusSupp">
+            <End Role="StatusSupp" EntitySet="StatusSupp" />
+            <End Role="Supply" EntitySet="Supply" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductOrder_Product" Association="Self.FK_ProductOrder_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductOrder" EntitySet="ProductOrder" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductSupplier_Product" Association="Self.FK_ProductSupplier_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductSupplier" EntitySet="ProductSupplier" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductSupplier_ReceiptOfProduct" Association="Self.FK_ProductSupplier_ReceiptOfProduct">
-            <End Role="ReceiptOfProduct" EntitySet="ReceiptOfProduct" />
-            <End Role="ProductSupplier" EntitySet="ProductSupplier" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReceiptOfProduct_StatusReceipt1" Association="Self.FK_ReceiptOfProduct_StatusReceipt1">
-            <End Role="StatusReceipt" EntitySet="StatusReceipt" />
-            <End Role="ReceiptOfProduct" EntitySet="ReceiptOfProduct" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReceiptOfProduct_Supplier1" Association="Self.FK_ReceiptOfProduct_Supplier1">
-            <End Role="Supplier" EntitySet="Supplier" />
-            <End Role="ReceiptOfProduct" EntitySet="ReceiptOfProduct" />
+          <AssociationSet Name="FK_Supply_Suppliers" Association="Self.FK_Supply_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="Supply" EntitySet="Supply" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
@@ -400,133 +301,93 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="PractProductModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Count">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Count" FromRole="Count" ToRole="Product" />
-        </EntityType>
+      <Schema Namespace="PractProduct1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ProductCountry" Relationship="Self.FK_ProductCountry_Country" FromRole="Country" ToRole="ProductCountry" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Country" FromRole="Country" ToRole="Supply" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="OrderDate" Type="DateTime" Precision="0" />
-          <Property Name="TotalCost" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="Employeeid" Type="Int32" />
-          <Property Name="Clientid" Type="Int32" />
-          <Property Name="Statusid" Type="Int32" />
-          <NavigationProperty Name="Status" Relationship="Self.FK_Order_Status" FromRole="Order" ToRole="Status" />
+          <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="DataApp" Type="DateTime" Precision="0" />
+          <Property Name="StatusOrderID" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Order_Product" FromRole="Order" ToRole="Product" />
+          <NavigationProperty Name="StatusOrder" Relationship="Self.FK_Order_StatusOrder" FromRole="Order" ToRole="StatusOrder" />
           <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
-          <NavigationProperty Name="ProductOrder" Relationship="Self.FK_ProductOrder_Order" FromRole="Order" ToRole="ProductOrder" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Discription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Photo" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Discription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="200" FixedLength="false" />
           <Property Name="DateAdd" Type="DateTime" Precision="0" />
-          <Property Name="UnitId" Type="Int32" />
           <Property Name="Cast" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="CountID" Type="Int32" />
+          <Property Name="UnitId" Type="Int32" />
           <Property Name="Count" Type="Int32" />
-          <NavigationProperty Name="Count1" Relationship="Self.FK_Product_Count" FromRole="Product" ToRole="Count" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Product" FromRole="Product" ToRole="Order" />
           <NavigationProperty Name="Unit" Relationship="Self.FK_Product_Unit" FromRole="Product" ToRole="Unit" />
-          <NavigationProperty Name="ProductCountry" Relationship="Self.FK_ProductCountry_Product" FromRole="Product" ToRole="ProductCountry" />
-          <NavigationProperty Name="ProductOrder" Relationship="Self.FK_ProductOrder_Product" FromRole="Product" ToRole="ProductOrder" />
-          <NavigationProperty Name="ProductSupplier" Relationship="Self.FK_ProductSupplier_Product" FromRole="Product" ToRole="ProductSupplier" />
-        </EntityType>
-        <EntityType Name="ProductCountry">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Productid" Type="Int32" Nullable="false" />
-          <Property Name="CountryId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Country" Relationship="Self.FK_ProductCountry_Country" FromRole="ProductCountry" ToRole="Country" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ProductCountry_Product" FromRole="ProductCountry" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="ProductOrder">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="OrderId" Type="Int32" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="Count" Type="Int32" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_ProductOrder_Order" FromRole="ProductOrder" ToRole="Order" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ProductOrder_Product" FromRole="ProductOrder" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="ProductSupplier">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Productid" Type="Int32" />
-          <Property Name="ReceiptofproductID" Type="Int32" />
-          <Property Name="Count" Type="Int32" />
-          <Property Name="PriceUnit" Type="Int32" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ProductSupplier_Product" FromRole="ProductSupplier" ToRole="Product" />
-          <NavigationProperty Name="ReceiptOfProduct" Relationship="Self.FK_ProductSupplier_ReceiptOfProduct" FromRole="ProductSupplier" ToRole="ReceiptOfProduct" />
-        </EntityType>
-        <EntityType Name="ReceiptOfProduct">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="TotalCost" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
-          <Property Name="StatusId" Type="Int32" />
-          <Property Name="Supplier" Type="Int32" />
-          <NavigationProperty Name="ProductSupplier" Relationship="Self.FK_ProductSupplier_ReceiptOfProduct" FromRole="ReceiptOfProduct" ToRole="ProductSupplier" />
-          <NavigationProperty Name="StatusReceipt" Relationship="Self.FK_ReceiptOfProduct_StatusReceipt1" FromRole="ReceiptOfProduct" ToRole="StatusReceipt" />
-          <NavigationProperty Name="Supplier1" Relationship="Self.FK_ReceiptOfProduct_Supplier1" FromRole="ReceiptOfProduct" ToRole="Supplier" />
+          <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Product" FromRole="Product" ToRole="Supply" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
         </EntityType>
-        <EntityType Name="Status">
+        <EntityType Name="StatusOrder">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Status" FromRole="Status" ToRole="Order" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_StatusOrder" FromRole="StatusOrder" ToRole="Order" />
         </EntityType>
-        <EntityType Name="StatusReceipt">
+        <EntityType Name="StatusSupp">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ReceiptOfProduct" Relationship="Self.FK_ReceiptOfProduct_StatusReceipt1" FromRole="StatusReceipt" ToRole="ReceiptOfProduct" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_StatusSupp" FromRole="StatusSupp" ToRole="Supply" />
         </EntityType>
-        <EntityType Name="Supplier">
+        <EntityType Name="Suppliers">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ReceiptOfProduct" Relationship="Self.FK_ReceiptOfProduct_Supplier1" FromRole="Supplier" ToRole="ReceiptOfProduct" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Suppliers" FromRole="Suppliers" ToRole="Supply" />
+        </EntityType>
+        <EntityType Name="Supply">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="DataSupp" Type="DateTime" Precision="0" />
+          <Property Name="StatusSuppId" Type="Int32" />
+          <Property Name="SuppliersID" Type="Int32" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CountryID" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Supply_Country" FromRole="Supply" ToRole="Country" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Supply_Product" FromRole="Supply" ToRole="Product" />
+          <NavigationProperty Name="StatusSupp" Relationship="Self.FK_Supply_StatusSupp" FromRole="Supply" ToRole="StatusSupp" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK_Supply_Suppliers" FromRole="Supply" ToRole="Suppliers" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -543,7 +404,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Product_Unit" FromRole="Unit" ToRole="Product" />
         </EntityType>
         <EntityType Name="User">
@@ -551,50 +412,51 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Login" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Roleid" Type="Int32" />
           <Property Name="Surname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Patronymic" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="basket" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
-        <Association Name="FK_Product_Count">
-          <End Role="Count" Type="Self.Count" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Count">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="CountID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductCountry_Country">
-          <End Role="Country" Type="Self.Country" Multiplicity="1" />
-          <End Role="ProductCountry" Type="Self.ProductCountry" Multiplicity="*" />
+        <Association Name="FK_Supply_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="ProductCountry">
-              <PropertyRef Name="CountryId" />
+            <Dependent Role="Supply">
+              <PropertyRef Name="CountryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+        <Association Name="FK_Order_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Status">
+            <Principal Role="Product">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Order">
-              <PropertyRef Name="Statusid" />
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_StatusOrder">
+          <End Role="StatusOrder" Type="Self.StatusOrder" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="StatusOrderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -606,19 +468,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Order">
-              <PropertyRef Name="Clientid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductOrder_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
-          <End Role="ProductOrder" Type="Self.ProductOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProductOrder">
-              <PropertyRef Name="OrderId" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -634,75 +484,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductCountry_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="ProductCountry" Type="Self.ProductCountry" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProductCountry">
-              <PropertyRef Name="Productid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductOrder_Product">
+        <Association Name="FK_Supply_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="ProductOrder" Type="Self.ProductOrder" Multiplicity="*" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="ProductOrder">
+            <Dependent Role="Supply">
               <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductSupplier_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="ProductSupplier" Type="Self.ProductSupplier" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProductSupplier">
-              <PropertyRef Name="Productid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductSupplier_ReceiptOfProduct">
-          <End Role="ReceiptOfProduct" Type="Self.ReceiptOfProduct" Multiplicity="0..1" />
-          <End Role="ProductSupplier" Type="Self.ProductSupplier" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ReceiptOfProduct">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProductSupplier">
-              <PropertyRef Name="ReceiptofproductID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReceiptOfProduct_StatusReceipt1">
-          <End Role="StatusReceipt" Type="Self.StatusReceipt" Multiplicity="0..1" />
-          <End Role="ReceiptOfProduct" Type="Self.ReceiptOfProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="StatusReceipt">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ReceiptOfProduct">
-              <PropertyRef Name="StatusId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReceiptOfProduct_Supplier1">
-          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
-          <End Role="ReceiptOfProduct" Type="Self.ReceiptOfProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Supplier">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ReceiptOfProduct">
-              <PropertyRef Name="Supplier" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -718,73 +508,77 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PractProductEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Count" EntityType="Self.Count" />
+        <Association Name="FK_Supply_StatusSupp">
+          <End Role="StatusSupp" Type="Self.StatusSupp" Multiplicity="0..1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusSupp">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supply">
+              <PropertyRef Name="StatusSuppId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supply_Suppliers">
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="0..1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supply">
+              <PropertyRef Name="SuppliersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PractProduct1Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Country" EntityType="Self.Country" />
           <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="Product" EntityType="Self.Product" />
-          <EntitySet Name="ProductCountry" EntityType="Self.ProductCountry" />
-          <EntitySet Name="ProductOrder" EntityType="Self.ProductOrder" />
-          <EntitySet Name="ProductSupplier" EntityType="Self.ProductSupplier" />
-          <EntitySet Name="ReceiptOfProduct" EntityType="Self.ReceiptOfProduct" />
           <EntitySet Name="Role" EntityType="Self.Role" />
-          <EntitySet Name="Status" EntityType="Self.Status" />
-          <EntitySet Name="StatusReceipt" EntityType="Self.StatusReceipt" />
-          <EntitySet Name="Supplier" EntityType="Self.Supplier" />
+          <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" />
+          <EntitySet Name="StatusSupp" EntityType="Self.StatusSupp" />
+          <EntitySet Name="Suppliers" EntityType="Self.Suppliers" />
+          <EntitySet Name="Supply" EntityType="Self.Supply" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Unit" EntityType="Self.Unit" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <AssociationSet Name="FK_Product_Count" Association="Self.FK_Product_Count">
-            <End Role="Count" EntitySet="Count" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductCountry_Country" Association="Self.FK_ProductCountry_Country">
+          <AssociationSet Name="FK_Supply_Country" Association="Self.FK_Supply_Country">
             <End Role="Country" EntitySet="Country" />
-            <End Role="ProductCountry" EntitySet="ProductCountry" />
+            <End Role="Supply" EntitySet="Supply" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
-            <End Role="Status" EntitySet="Status" />
+          <AssociationSet Name="FK_Order_Product" Association="Self.FK_Order_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_StatusOrder" Association="Self.FK_Order_StatusOrder">
+            <End Role="StatusOrder" EntitySet="StatusOrder" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductOrder_Order" Association="Self.FK_ProductOrder_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="ProductOrder" EntitySet="ProductOrder" />
-          </AssociationSet>
           <AssociationSet Name="FK_Product_Unit" Association="Self.FK_Product_Unit">
             <End Role="Unit" EntitySet="Unit" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductCountry_Product" Association="Self.FK_ProductCountry_Product">
+          <AssociationSet Name="FK_Supply_Product" Association="Self.FK_Supply_Product">
             <End Role="Product" EntitySet="Product" />
-            <End Role="ProductCountry" EntitySet="ProductCountry" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductOrder_Product" Association="Self.FK_ProductOrder_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductOrder" EntitySet="ProductOrder" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductSupplier_Product" Association="Self.FK_ProductSupplier_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductSupplier" EntitySet="ProductSupplier" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductSupplier_ReceiptOfProduct" Association="Self.FK_ProductSupplier_ReceiptOfProduct">
-            <End Role="ReceiptOfProduct" EntitySet="ReceiptOfProduct" />
-            <End Role="ProductSupplier" EntitySet="ProductSupplier" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReceiptOfProduct_StatusReceipt1" Association="Self.FK_ReceiptOfProduct_StatusReceipt1">
-            <End Role="StatusReceipt" EntitySet="StatusReceipt" />
-            <End Role="ReceiptOfProduct" EntitySet="ReceiptOfProduct" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReceiptOfProduct_Supplier1" Association="Self.FK_ReceiptOfProduct_Supplier1">
-            <End Role="Supplier" EntitySet="Supplier" />
-            <End Role="ReceiptOfProduct" EntitySet="ReceiptOfProduct" />
+            <End Role="Supply" EntitySet="Supply" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supply_StatusSupp" Association="Self.FK_Supply_StatusSupp">
+            <End Role="StatusSupp" EntitySet="StatusSupp" />
+            <End Role="Supply" EntitySet="Supply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supply_Suppliers" Association="Self.FK_Supply_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="Supply" EntitySet="Supply" />
           </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -802,11 +596,11 @@
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PractProductModel.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PractProduct1Model.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PractProductModel.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PractProduct1Model.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -833,17 +627,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище PractProductModelContainer" CdmEntityContainer="PractProductEntities">
-          <EntitySetMapping Name="Count">
-            <EntityTypeMapping TypeName="PractProductModel.Count">
-              <MappingFragment StoreEntitySet="Count">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="Хранилище PractProduct1ModelContainer" CdmEntityContainer="PractProduct1Entities">
           <EntitySetMapping Name="Country">
-            <EntityTypeMapping TypeName="PractProductModel.Country">
+            <EntityTypeMapping TypeName="PractProduct1Model.Country">
               <MappingFragment StoreEntitySet="Country">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -851,107 +637,79 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order">
-            <EntityTypeMapping TypeName="PractProductModel.Order">
+            <EntityTypeMapping TypeName="PractProduct1Model.Order">
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
-                <ScalarProperty Name="Employeeid" ColumnName="Employeeid" />
-                <ScalarProperty Name="Clientid" ColumnName="Clientid" />
-                <ScalarProperty Name="Statusid" ColumnName="Statusid" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="DataApp" ColumnName="DataApp" />
+                <ScalarProperty Name="StatusOrderID" ColumnName="StatusOrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="PractProductModel.Product">
+            <EntityTypeMapping TypeName="PractProduct1Model.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Discription" ColumnName="Discription" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="DateAdd" ColumnName="DateAdd" />
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
                 <ScalarProperty Name="Cast" ColumnName="Cast" />
-                <ScalarProperty Name="CountID" ColumnName="CountID" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductCountry">
-            <EntityTypeMapping TypeName="PractProductModel.ProductCountry">
-              <MappingFragment StoreEntitySet="ProductCountry">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Productid" ColumnName="Productid" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductOrder">
-            <EntityTypeMapping TypeName="PractProductModel.ProductOrder">
-              <MappingFragment StoreEntitySet="ProductOrder">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductSupplier">
-            <EntityTypeMapping TypeName="PractProductModel.ProductSupplier">
-              <MappingFragment StoreEntitySet="ProductSupplier">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Productid" ColumnName="Productid" />
-                <ScalarProperty Name="ReceiptofproductID" ColumnName="ReceiptofproductID" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-                <ScalarProperty Name="PriceUnit" ColumnName="PriceUnit" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ReceiptOfProduct">
-            <EntityTypeMapping TypeName="PractProductModel.ReceiptOfProduct">
-              <MappingFragment StoreEntitySet="ReceiptOfProduct">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
-            <EntityTypeMapping TypeName="PractProductModel.Role">
+            <EntityTypeMapping TypeName="PractProduct1Model.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Status">
-            <EntityTypeMapping TypeName="PractProductModel.Status">
-              <MappingFragment StoreEntitySet="Status">
+          <EntitySetMapping Name="StatusOrder">
+            <EntityTypeMapping TypeName="PractProduct1Model.StatusOrder">
+              <MappingFragment StoreEntitySet="StatusOrder">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="StatusReceipt">
-            <EntityTypeMapping TypeName="PractProductModel.StatusReceipt">
-              <MappingFragment StoreEntitySet="StatusReceipt">
+          <EntitySetMapping Name="StatusSupp">
+            <EntityTypeMapping TypeName="PractProduct1Model.StatusSupp">
+              <MappingFragment StoreEntitySet="StatusSupp">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Supplier">
-            <EntityTypeMapping TypeName="PractProductModel.Supplier">
-              <MappingFragment StoreEntitySet="Supplier">
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="PractProduct1Model.Suppliers">
+              <MappingFragment StoreEntitySet="Suppliers">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supply">
+            <EntityTypeMapping TypeName="PractProduct1Model.Supply">
+              <MappingFragment StoreEntitySet="Supply">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="DataSupp" ColumnName="DataSupp" />
+                <ScalarProperty Name="StatusSuppId" ColumnName="StatusSuppId" />
+                <ScalarProperty Name="SuppliersID" ColumnName="SuppliersID" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="PractProductModel.sysdiagrams">
+            <EntityTypeMapping TypeName="PractProduct1Model.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -962,7 +720,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Unit">
-            <EntityTypeMapping TypeName="PractProductModel.Unit">
+            <EntityTypeMapping TypeName="PractProduct1Model.Unit">
               <MappingFragment StoreEntitySet="Unit">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -970,7 +728,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="PractProductModel.User">
+            <EntityTypeMapping TypeName="PractProduct1Model.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
@@ -981,23 +739,24 @@
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="basket" ColumnName="basket" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище PractProductModel.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище PractProductModel.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище PractProductModel.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище PractProductModel.sp_helpdiagramdefinition">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище PractProduct1Model.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище PractProduct1Model.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище PractProduct1Model.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище PractProduct1Model.sp_helpdiagramdefinition">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="PractProductModel.sp_helpdiagramdefinition_Result">
+              <ComplexTypeMapping TypeName="PractProduct1Model.sp_helpdiagramdefinition_Result">
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище PractProductModel.sp_helpdiagrams">
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище PractProduct1Model.sp_helpdiagrams">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="PractProductModel.sp_helpdiagrams_Result">
+              <ComplexTypeMapping TypeName="PractProduct1Model.sp_helpdiagrams_Result">
                 <ScalarProperty Name="Database" ColumnName="Database" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1006,8 +765,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище PractProductModel.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище PractProductModel.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище PractProduct1Model.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище PractProduct1Model.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

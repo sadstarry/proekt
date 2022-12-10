@@ -12,23 +12,18 @@ namespace proekt.Components
     using System;
     using System.Collections.Generic;
     
-    public partial class ReceiptOfProduct
+    public partial class StatusOrder
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ReceiptOfProduct()
+        public StatusOrder()
         {
-            this.ProductSupplier = new HashSet<ProductSupplier>();
+            this.Order = new HashSet<Order>();
         }
     
         public int ID { get; set; }
-        public Nullable<decimal> TotalCost { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<int> StatusId { get; set; }
-        public Nullable<int> Supplier { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductSupplier> ProductSupplier { get; set; }
-        public virtual StatusReceipt StatusReceipt { get; set; }
-        public virtual Supplier Supplier1 { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

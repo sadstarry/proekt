@@ -15,10 +15,10 @@ namespace proekt.Components
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class PractProductEntities : DbContext
+    public partial class PractProduct1Entities : DbContext
     {
-        public PractProductEntities()
-            : base("name=PractProductEntities")
+        public PractProduct1Entities()
+            : base("name=PractProduct1Entities")
         {
         }
     
@@ -27,18 +27,14 @@ namespace proekt.Components
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Count> Count { get; set; }
         public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductCountry> ProductCountry { get; set; }
-        public virtual DbSet<ProductOrder> ProductOrder { get; set; }
-        public virtual DbSet<ProductSupplier> ProductSupplier { get; set; }
-        public virtual DbSet<ReceiptOfProduct> ReceiptOfProduct { get; set; }
         public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<Status> Status { get; set; }
-        public virtual DbSet<StatusReceipt> StatusReceipt { get; set; }
-        public virtual DbSet<Supplier> Supplier { get; set; }
+        public virtual DbSet<StatusOrder> StatusOrder { get; set; }
+        public virtual DbSet<StatusSupp> StatusSupp { get; set; }
+        public virtual DbSet<Suppliers> Suppliers { get; set; }
+        public virtual DbSet<Supply> Supply { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Unit> Unit { get; set; }
         public virtual DbSet<User> User { get; set; }

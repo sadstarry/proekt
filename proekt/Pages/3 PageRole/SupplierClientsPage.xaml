@@ -19,11 +19,12 @@
                 <ColumnDefinition Width="667*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Background="WhiteSmoke" Margin="0,0,0,3"/>
-            <StackPanel Grid.RowSpan="2" Grid.Column="0" Background="WhiteSmoke" Margin="0,0,2,0"/>
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Background="#d1eefc" Margin="0,0,0,3"/>
+            <StackPanel Grid.RowSpan="2" Grid.Column="0" Background="#d1eefc"/>
             <StackPanel Grid.Row="0" Grid.Column="1">
             </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="1">
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="647">
+                <TextBlock Width="477" VerticalAlignment="Center" FontFamily="Comic Sans MS" FontSize="18"> Поставщик</TextBlock>
                 <Button Margin="5" x:Name="BtnExit" Width="150" HorizontalAlignment="Right" Click="BtnExit_Click">Выйти из аккаунта</Button>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,35,0,0">
@@ -39,9 +40,10 @@
                         товара
                     </TextBlock>
                 </Button>
+                <TextBlock FontSize="11" FontFamily="Comic Sans MS" VerticalAlignment="Bottom" HorizontalAlignment="Center"> @sadstarry 2022</TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="22,0,23,384">
-                <Image Source="..\..\Resurs\logo.png" Height="66" Width="80"></Image>
+                <Image Source="..\..\Resurs\logo.png" Height="32" Width="46"></Image>
             </StackPanel>
             <!-- <Frame x:Name="MyFrame" Grid.Column="1" Grid.RowSpan="2" Margin="0,35,0,0"/> -->
         </Grid>
