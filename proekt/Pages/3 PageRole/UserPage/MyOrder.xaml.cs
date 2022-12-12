@@ -24,5 +24,35 @@ namespace proekt.Pages._3_PageRole.UserPage
         {
             InitializeComponent();
         }
+
+        private void BtnLeft_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnRight_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CbCountVisible_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void CbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void CbUnit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

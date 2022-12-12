@@ -18,6 +18,7 @@ namespace proekt.Components
         public Suppliers()
         {
             this.Supply = new HashSet<Supply>();
+            this.SupProdCountry = new HashSet<SupProdCountry>();
         }
     
         public int ID { get; set; }
@@ -25,5 +26,7 @@ namespace proekt.Components
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supply> Supply { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SupProdCountry> SupProdCountry { get; set; }
     }
 }

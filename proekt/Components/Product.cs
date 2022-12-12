@@ -17,24 +17,27 @@ namespace proekt.Components
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.Order = new HashSet<Order>();
             this.Supply = new HashSet<Supply>();
+            this.SupProdCountry = new HashSet<SupProdCountry>();
+            this.ZvOrder = new HashSet<ZvOrder>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
         public string Discription { get; set; }
-        public byte[] Photo { get; set; }
         public Nullable<System.DateTime> DateAdd { get; set; }
         public Nullable<decimal> Cast { get; set; }
         public Nullable<int> UnitId { get; set; }
         public Nullable<int> Count { get; set; }
         public Nullable<bool> IsDelete { get; set; }
+        public string photo { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
         public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supply> Supply { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SupProdCountry> SupProdCountry { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ZvOrder> ZvOrder { get; set; }
     }
 }

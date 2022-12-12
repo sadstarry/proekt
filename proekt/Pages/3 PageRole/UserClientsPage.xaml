@@ -23,8 +23,8 @@
             <StackPanel Grid.RowSpan="2" Grid.Column="0" Background="#d1eefc" Margin="0,0,2,0"/>
             <StackPanel Grid.Row="0" Grid.Column="1">
             </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="0,5,0,10" >
-                <TextBlock Width="469" FontFamily="Comic Sans MS" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"> Покупатель</TextBlock>
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="0,5,-132,10" >
+                <TextBlock Width="593" FontFamily="Comic Sans MS" FontSize="18" VerticalAlignment="Center"> Покупатель</TextBlock>
                 <Button x:Name="BtnExit" Width="149" Click="BtnExit_Click" Height="20">Выйти из аккаунта</Button>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,35,0,0">

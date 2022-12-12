@@ -18,12 +18,16 @@ namespace proekt.Components
         public Country()
         {
             this.Supply = new HashSet<Supply>();
+            this.SupProdCountry = new HashSet<SupProdCountry>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
+        public string Color { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supply> Supply { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SupProdCountry> SupProdCountry { get; set; }
     }
 }

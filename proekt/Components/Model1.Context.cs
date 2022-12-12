@@ -15,10 +15,10 @@ namespace proekt.Components
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class PractProduct1Entities : DbContext
+    public partial class PractProduct1Entities2 : DbContext
     {
-        public PractProduct1Entities()
-            : base("name=PractProduct1Entities")
+        public PractProduct1Entities2()
+            : base("name=PractProduct1Entities2")
         {
         }
     
@@ -35,9 +35,11 @@ namespace proekt.Components
         public virtual DbSet<StatusSupp> StatusSupp { get; set; }
         public virtual DbSet<Suppliers> Suppliers { get; set; }
         public virtual DbSet<Supply> Supply { get; set; }
+        public virtual DbSet<SupProdCountry> SupProdCountry { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Unit> Unit { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<ZvOrder> ZvOrder { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

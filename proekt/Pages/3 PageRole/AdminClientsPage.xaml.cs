@@ -1,4 +1,5 @@
-﻿using System;
+﻿using proekt.Pages._3_PageRole.AdminPage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,14 @@ namespace proekt.Pages._3_PageRole
     /// <summary>
     /// Логика взаимодействия для AdminClientsPage.xaml
     /// </summary>
+    /// 
+    // ListAdminProduct
     public partial class AdminClientsPage : Page
     {
         public AdminClientsPage()
         {
             InitializeComponent();
+            ListAdminProduct.Navigate(new AdminPage.ListAdminProduct());
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
@@ -30,24 +34,25 @@ namespace proekt.Pages._3_PageRole
             NavigationService.Navigate(new Auth());
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void BtnProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            ListAdminProduct.Navigate(new ListAdminProduct());
         }
 
         private void BtnOrders_Click(object sender, RoutedEventArgs e)
         {
-
+            ListAdminProduct.Navigate(new OrderAdminList());
         }
 
         private void BtnCountry_Click(object sender, RoutedEventArgs e)
         {
+            ListAdminProduct.Navigate(new CountrySupplierEditAdmin());
+        }
 
+        private void BtnRole_Click(object sender, RoutedEventArgs e)
+        {
+            ListAdminProduct.Navigate(new UserEditAdminPage());
         }
     }
 }

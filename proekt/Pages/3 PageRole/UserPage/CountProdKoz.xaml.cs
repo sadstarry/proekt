@@ -13,16 +13,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace proekt.Pages._3_PageRole.AdminPage
+namespace proekt.Pages._3_PageRole.UserPage
 {
     /// <summary>
-    /// Логика взаимодействия для Page1.xaml
+    /// Логика взаимодействия для CountProdKoz.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class CountProdKoz : Page
     {
-        public Page1()
+        public CountProdKoz()
         {
             InitializeComponent();
+        }
+
+        private void Reg_click(object sender, RoutedEventArgs e)
+        {
+
+            NavigationService.Navigate(new UserBacket());
+        }
+
+        private void NextReg_click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new UserBacket());
         }
     }
 }

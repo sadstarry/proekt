@@ -21,12 +21,7 @@
 
             <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Background="#d1eefc" Margin="0,0,0,3"/>
             <StackPanel Grid.RowSpan="2" Grid.Column="0" Background="#d1eefc" Margin="0,0,2,0"/>
-            <StackPanel Grid.Row="0" Grid.Column="1">
-                <StackPanel Orientation="Horizontal">
-                    <Button Margin="5"  x:Name="Add" Click="Add_Click">Добавить новый</Button>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5" Margin="111,0,1,4">
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5" Margin="1,0,1,4">
                 <StackPanel.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -49,7 +44,7 @@
             <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,35,0,0">
                 <Button Margin="5" x:Name="BtnProduct" Click="BtnProduct_Click">Продукция</Button>
                 <Button Margin="5" x:Name="BtnOrders" Click="BtnOrders_Click">Заказы</Button>
-
+                <Button Margin="5" x:Name="BtnRole" Click="BtnRole_Click">Пользователи</Button>
                 <Button Margin="5" x:Name="BtnCountry" Click="BtnCountry_Click">
                     <TextBlock  TextAlignment="Center"> Страны <LineBreak/> поставщики</TextBlock>
                 </Button>
@@ -58,7 +53,7 @@
             <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="22,0,23,384">
                 <Image Source="..\..\Resurs\logo.png" Height="32" Width="46"></Image>
             </StackPanel>
-            <!-- <Frame x:Name="MyFrame" Grid.Column="1" Grid.RowSpan="2" Margin="0,35,0,0"/> -->
+            <Frame x:Name="ListAdminProduct" Grid.Column="1" Grid.Row="1"/>
         </Grid>
     </Grid>
 </Page>

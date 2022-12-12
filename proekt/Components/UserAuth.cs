@@ -11,7 +11,8 @@ namespace proekt.UserAuth
     {
         
         public static User nameuser = new User();
-        
-
+        public static Product tovar = new Product();
+        public static User RedUser = new User();
+        public static Product Count = new Product();
     }
 }

@@ -136,7 +136,7 @@ namespace proekt.Pages
             } 
             else
             {
-                atimer.Interval = new TimeSpan(0, 0, 5);
+                atimer.Interval = new TimeSpan(0, 0, 60);
                 atimer.Start();
                 TextBlock.Text = "Вы ввели максимальное кол-во попыток\nПодождите 1 минуту";
             }

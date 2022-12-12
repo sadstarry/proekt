@@ -4,19 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.TextFormatting;
 
 namespace proekt.Components
 {
-    
-   public partial class Product
-    {
-        string username = "233";
-        public void temp(string Name)
-        {
-            username = Name;
-            MessageBox.Show(username);
-        }
 
+    public partial class Product
+    {
         public Visibility visibilityCount
         {
             get

@@ -11,30 +11,31 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Color" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" />
-          <Property Name="ProductId" Type="int" />
           <Property Name="DataApp" Type="date" />
           <Property Name="StatusOrderID" Type="int" />
+          <Property Name="Menedjet" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" />
           <Property Name="Discription" Type="varchar" MaxLength="200" />
-          <Property Name="Photo" Type="varbinary" MaxLength="200" />
           <Property Name="DateAdd" Type="date" />
           <Property Name="Cast" Type="decimal" Precision="10" Scale="2" />
           <Property Name="UnitId" Type="int" />
           <Property Name="Count" Type="int" />
           <Property Name="IsDelete" Type="bit" />
+          <Property Name="photo" Type="ntext" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -77,6 +78,15 @@
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
           <Property Name="CountryID" Type="int" />
         </EntityType>
+        <EntityType Name="SupProdCountry">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IDProd" Type="int" />
+          <Property Name="IDSup" Type="int" />
+          <Property Name="IDCountry" Type="int" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -107,20 +117,17 @@
           <Property Name="Patronymic" Type="varchar" MaxLength="200" />
           <Property Name="Phone" Type="varchar" MaxLength="200" />
           <Property Name="Email" Type="varchar" MaxLength="200" />
-          <Property Name="basket" Type="varchar" MaxLength="200" />
+          <Property Name="basket" Type="ntext" />
         </EntityType>
-        <Association Name="FK_Order_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="ZvOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IdOrder" Type="int" />
+          <Property Name="IdProduct" Type="int" />
+          <Property Name="Count" Type="int" />
+        </EntityType>
         <Association Name="FK_Order_StatusOrder">
           <End Role="StatusOrder" Type="Self.StatusOrder" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
@@ -205,6 +212,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SupProdCountry_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="SupProdCountry" Type="Self.SupProdCountry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupProdCountry">
+              <PropertyRef Name="IDCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupProdCountry_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="SupProdCountry" Type="Self.SupProdCountry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupProdCountry">
+              <PropertyRef Name="IDProd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupProdCountry_Suppliers">
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="0..1" />
+          <End Role="SupProdCountry" Type="Self.SupProdCountry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupProdCountry">
+              <PropertyRef Name="IDSup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -214,6 +257,30 @@
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="Roleid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZvOrder_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="ZvOrder" Type="Self.ZvOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ZvOrder">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZvOrder_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ZvOrder" Type="Self.ZvOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ZvOrder">
+              <PropertyRef Name="IdProduct" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -257,13 +324,11 @@
           <EntitySet Name="StatusSupp" EntityType="Self.StatusSupp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Suppliers" EntityType="Self.Suppliers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supply" EntityType="Self.Supply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupProdCountry" EntityType="Self.SupProdCountry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Order_Product" Association="Self.FK_Order_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
+          <EntitySet Name="ZvOrder" EntityType="Self.ZvOrder" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Order_StatusOrder" Association="Self.FK_Order_StatusOrder">
             <End Role="StatusOrder" EntitySet="StatusOrder" />
             <End Role="Order" EntitySet="Order" />
@@ -292,9 +357,29 @@
             <End Role="Suppliers" EntitySet="Suppliers" />
             <End Role="Supply" EntitySet="Supply" />
           </AssociationSet>
+          <AssociationSet Name="FK_SupProdCountry_Country" Association="Self.FK_SupProdCountry_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="SupProdCountry" EntitySet="SupProdCountry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupProdCountry_Product" Association="Self.FK_SupProdCountry_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SupProdCountry" EntitySet="SupProdCountry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupProdCountry_Suppliers" Association="Self.FK_SupProdCountry_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="SupProdCountry" EntitySet="SupProdCountry" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZvOrder_Order" Association="Self.FK_ZvOrder_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="ZvOrder" EntitySet="ZvOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZvOrder_Product" Association="Self.FK_ZvOrder_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ZvOrder" EntitySet="ZvOrder" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -308,37 +393,40 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Color" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Country" FromRole="Country" ToRole="Supply" />
+          <NavigationProperty Name="SupProdCountry" Relationship="Self.FK_SupProdCountry_Country" FromRole="Country" ToRole="SupProdCountry" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" />
-          <Property Name="ProductId" Type="Int32" />
           <Property Name="DataApp" Type="DateTime" Precision="0" />
           <Property Name="StatusOrderID" Type="Int32" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Order_Product" FromRole="Order" ToRole="Product" />
+          <Property Name="Menedjet" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="StatusOrder" Relationship="Self.FK_Order_StatusOrder" FromRole="Order" ToRole="StatusOrder" />
           <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="ZvOrder" Relationship="Self.FK_ZvOrder_Order" FromRole="Order" ToRole="ZvOrder" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Discription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Photo" Type="Binary" MaxLength="200" FixedLength="false" />
           <Property Name="DateAdd" Type="DateTime" Precision="0" />
           <Property Name="Cast" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="UnitId" Type="Int32" />
           <Property Name="Count" Type="Int32" />
           <Property Name="IsDelete" Type="Boolean" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Product" FromRole="Product" ToRole="Order" />
+          <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Unit" Relationship="Self.FK_Product_Unit" FromRole="Product" ToRole="Unit" />
           <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Product" FromRole="Product" ToRole="Supply" />
+          <NavigationProperty Name="SupProdCountry" Relationship="Self.FK_SupProdCountry_Product" FromRole="Product" ToRole="SupProdCountry" />
+          <NavigationProperty Name="ZvOrder" Relationship="Self.FK_ZvOrder_Product" FromRole="Product" ToRole="ZvOrder" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -371,6 +459,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Suppliers" FromRole="Suppliers" ToRole="Supply" />
+          <NavigationProperty Name="SupProdCountry" Relationship="Self.FK_SupProdCountry_Suppliers" FromRole="Suppliers" ToRole="SupProdCountry" />
         </EntityType>
         <EntityType Name="Supply">
           <Key>
@@ -388,6 +477,18 @@
           <NavigationProperty Name="Product" Relationship="Self.FK_Supply_Product" FromRole="Supply" ToRole="Product" />
           <NavigationProperty Name="StatusSupp" Relationship="Self.FK_Supply_StatusSupp" FromRole="Supply" ToRole="StatusSupp" />
           <NavigationProperty Name="Suppliers" Relationship="Self.FK_Supply_Suppliers" FromRole="Supply" ToRole="Suppliers" />
+        </EntityType>
+        <EntityType Name="SupProdCountry">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IDProd" Type="Int32" />
+          <Property Name="IDSup" Type="Int32" />
+          <Property Name="IDCountry" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_SupProdCountry_Country" FromRole="SupProdCountry" ToRole="Country" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_SupProdCountry_Product" FromRole="SupProdCountry" ToRole="Product" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK_SupProdCountry_Suppliers" FromRole="SupProdCountry" ToRole="Suppliers" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -420,9 +521,20 @@
           <Property Name="Patronymic" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="basket" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="basket" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="ZvOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IdOrder" Type="Int32" />
+          <Property Name="IdProduct" Type="Int32" />
+          <Property Name="Count" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_ZvOrder_Order" FromRole="ZvOrder" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ZvOrder_Product" FromRole="ZvOrder" ToRole="Product" />
         </EntityType>
         <Association Name="FK_Supply_Country">
           <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
@@ -436,15 +548,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+        <Association Name="FK_SupProdCountry_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="SupProdCountry" Type="Self.SupProdCountry" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
+            <Principal Role="Country">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="ProductId" />
+            <Dependent Role="SupProdCountry">
+              <PropertyRef Name="IDCountry" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -472,6 +584,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ZvOrder_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="ZvOrder" Type="Self.ZvOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ZvOrder">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Product_Unit">
           <End Role="Unit" Type="Self.Unit" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -493,6 +617,30 @@
             </Principal>
             <Dependent Role="Supply">
               <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupProdCountry_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="SupProdCountry" Type="Self.SupProdCountry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupProdCountry">
+              <PropertyRef Name="IDProd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZvOrder_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ZvOrder" Type="Self.ZvOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ZvOrder">
+              <PropertyRef Name="IdProduct" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -532,7 +680,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PractProduct1Entities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_SupProdCountry_Suppliers">
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="0..1" />
+          <End Role="SupProdCountry" Type="Self.SupProdCountry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupProdCountry">
+              <PropertyRef Name="IDSup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PractProduct1Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Country" EntityType="Self.Country" />
           <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="Product" EntityType="Self.Product" />
@@ -541,16 +701,18 @@
           <EntitySet Name="StatusSupp" EntityType="Self.StatusSupp" />
           <EntitySet Name="Suppliers" EntityType="Self.Suppliers" />
           <EntitySet Name="Supply" EntityType="Self.Supply" />
+          <EntitySet Name="SupProdCountry" EntityType="Self.SupProdCountry" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Unit" EntityType="Self.Unit" />
           <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="ZvOrder" EntityType="Self.ZvOrder" />
           <AssociationSet Name="FK_Supply_Country" Association="Self.FK_Supply_Country">
             <End Role="Country" EntitySet="Country" />
             <End Role="Supply" EntitySet="Supply" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Product" Association="Self.FK_Order_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Order" EntitySet="Order" />
+          <AssociationSet Name="FK_SupProdCountry_Country" Association="Self.FK_SupProdCountry_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="SupProdCountry" EntitySet="SupProdCountry" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_StatusOrder" Association="Self.FK_Order_StatusOrder">
             <End Role="StatusOrder" EntitySet="StatusOrder" />
@@ -560,6 +722,10 @@
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
+          <AssociationSet Name="FK_ZvOrder_Order" Association="Self.FK_ZvOrder_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="ZvOrder" EntitySet="ZvOrder" />
+          </AssociationSet>
           <AssociationSet Name="FK_Product_Unit" Association="Self.FK_Product_Unit">
             <End Role="Unit" EntitySet="Unit" />
             <End Role="Product" EntitySet="Product" />
@@ -567,6 +733,14 @@
           <AssociationSet Name="FK_Supply_Product" Association="Self.FK_Supply_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="Supply" EntitySet="Supply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupProdCountry_Product" Association="Self.FK_SupProdCountry_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SupProdCountry" EntitySet="SupProdCountry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZvOrder_Product" Association="Self.FK_ZvOrder_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ZvOrder" EntitySet="ZvOrder" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
@@ -579,6 +753,10 @@
           <AssociationSet Name="FK_Supply_Suppliers" Association="Self.FK_Supply_Suppliers">
             <End Role="Suppliers" EntitySet="Suppliers" />
             <End Role="Supply" EntitySet="Supply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupProdCountry_Suppliers" Association="Self.FK_SupProdCountry_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="SupProdCountry" EntitySet="SupProdCountry" />
           </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -627,12 +805,13 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище PractProduct1ModelContainer" CdmEntityContainer="PractProduct1Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PractProduct1ModelContainer" CdmEntityContainer="PractProduct1Entities2">
           <EntitySetMapping Name="Country">
             <EntityTypeMapping TypeName="PractProduct1Model.Country">
               <MappingFragment StoreEntitySet="Country">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -641,9 +820,9 @@
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="DataApp" ColumnName="DataApp" />
                 <ScalarProperty Name="StatusOrderID" ColumnName="StatusOrderID" />
+                <ScalarProperty Name="Menedjet" ColumnName="Menedjet" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -653,12 +832,12 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Discription" ColumnName="Discription" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="DateAdd" ColumnName="DateAdd" />
                 <ScalarProperty Name="Cast" ColumnName="Cast" />
                 <ScalarProperty Name="UnitId" ColumnName="UnitId" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -708,6 +887,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SupProdCountry">
+            <EntityTypeMapping TypeName="PractProduct1Model.SupProdCountry">
+              <MappingFragment StoreEntitySet="SupProdCountry">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDProd" ColumnName="IDProd" />
+                <ScalarProperty Name="IDSup" ColumnName="IDSup" />
+                <ScalarProperty Name="IDCountry" ColumnName="IDCountry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="PractProduct1Model.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -740,6 +929,16 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="basket" ColumnName="basket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZvOrder">
+            <EntityTypeMapping TypeName="PractProduct1Model.ZvOrder">
+              <MappingFragment StoreEntitySet="ZvOrder">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
