@@ -1,8 +1,8 @@
 ﻿using proekt.Components;
+using proekt.Pages._3_PageRole.UserPage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -16,53 +16,54 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace proekt.Pages._3_PageRole.UserPage
+namespace proekt.Pages._3_PageRole.AdminPage
 {
     /// <summary>
-    /// Логика взаимодействия для CountProdKoz.xaml
+    /// Логика взаимодействия для Colichestvo.xaml
     /// </summary>
-    public partial class CountProdKoz : Page
+    public partial class Colichestvo : Page
     {
-        public CountProdKoz()
+        Product ttt;
+        public Colichestvo(Product BtnProd)
         {
             InitializeComponent();
-            TbLoginReg.Text = Regex.Match(UserAuth.UserAuth.nameuser.basket, @"," + UserAuth.UserAuth.Count.ID + @":(\d+),").Groups[1].ToString();
+            ttt = BtnProd;
+            TbLoginReg.Text = Regex.Match(UserAuth.UserAuth.Koz.Product, @"," + BtnProd.ID + @":(\d+),").Groups[1].ToString();
         }
 
         private void Reg_click(object sender, RoutedEventArgs e)
         {
-
             int colSize;
             try
             {
                 colSize = Convert.ToInt32(TbLoginReg.Text.Trim());
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Неккоректные данные\nВведите число");
                 return;
             }
 
-            if (colSize == 0 || colSize > UserAuth.UserAuth.Count.Count) {
+            if (colSize == 0)
+            {
                 MessageBox.Show("Данное количество товара не доступно!");
                 return;
             }
 
-            User Userid = Dbconnect.db.User.Where(x => x.ID == UserAuth.UserAuth.nameuser.ID).FirstOrDefault();
-            Match da6 = Regex.Match(Userid.basket, @"(.*," + UserAuth.UserAuth.Count.ID + @":)\d+(,.*)");
+            Order Userid = Dbconnect.db.Order.Where(x => x.ID == UserAuth.UserAuth.Koz.ID).FirstOrDefault();
+            Match da6 = Regex.Match(Userid.Product, @"(.*," + ttt.ID + @":)\d+(,.*)");
 
-            Userid.basket = Convert.ToString((Group)da6.Groups[1]) + Convert.ToString(colSize) + Convert.ToString((Group)da6.Groups[2]);
+            Userid.Product = Convert.ToString((Group)da6.Groups[1]) + Convert.ToString(colSize) + Convert.ToString((Group)da6.Groups[2]);
 
-            UserAuth.UserAuth.nameuser = Userid;
             Dbconnect.db.SaveChanges();
 
-            NavigationService.Navigate(new UserBacket());
+            NavigationService.Navigate(new RedOrder());
 
         }
 
         private void NextReg_click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new UserBacket());
+            NavigationService.Navigate(new RedOrder());
         }
     }
 }

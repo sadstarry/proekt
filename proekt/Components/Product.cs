@@ -30,7 +30,7 @@ namespace proekt.Components
         public Nullable<int> UnitId { get; set; }
         public Nullable<int> Count { get; set; }
         public Nullable<bool> IsDelete { get; set; }
-        public string photo { get; set; }
+        public byte[] Image1 { get; set; }
     
         public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

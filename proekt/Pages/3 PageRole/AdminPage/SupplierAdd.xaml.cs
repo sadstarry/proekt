@@ -14,26 +14,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace proekt.Pages._3_PageRole
+namespace proekt.Pages._3_PageRole.AdminPage
 {
     /// <summary>
-    /// Логика взаимодействия для ManagerClientPage.xaml
+    /// Логика взаимодействия для SupplierAdd.xaml
     /// </summary>
-    public partial class ManagerClientPage : Page
+    public partial class SupplierAdd : Page
     {
-        public ManagerClientPage()
+        public SupplierAdd()
         {
             InitializeComponent();
+
+            ListProduct.ItemsSource = Dbconnect.db.SupProdCountry.ToList();
         }
 
-        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        private void BtnReadSupplier_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Auth());
-        }
-
-        private void BtnOrders_Click(object sender, RoutedEventArgs e)
-        {
-            MyFrame.Navigate(new AdminPage.OrderAdminList());
+            NavigationService.Navigate(new AddSuppliers());
         }
     }
 }

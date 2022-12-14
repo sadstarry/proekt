@@ -50,13 +50,14 @@
                     <ComboBoxItem>200</ComboBoxItem>
                 </ComboBox>
 
-                <StackPanel Width="106" Orientation="Horizontal" Margin="5" VerticalAlignment="Center">
-                    <Button x:Name="BntBuy" Width="100" Height="20"  Click="BntBuy_Click">
+                <StackPanel Width="82" Orientation="Horizontal" Margin="5" VerticalAlignment="Center">
+                    <Button x:Name="BntBuy" Width="82" Height="20"  Click="BntBuy_Click">
                         Заказать
                     </Button>
                 </StackPanel>
-                <TextBlock VerticalAlignment="Center" Text="Стоимость: " />
+                <TextBlock VerticalAlignment="Center" Text="Общая стоимость: " />
                 <TextBlock x:Name="AllPrice" VerticalAlignment="Center">0</TextBlock>
+                <TextBlock VerticalAlignment="Center" Text="₽" TextAlignment="Center"/>
             </StackPanel>
             <ListView x:Name="ListKozinak" d:ItemsSource="{d:SampleData}" Grid.Row="1" >
                 <ListView.ItemTemplate>
@@ -78,7 +79,7 @@
 
                                 <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Margin="8">
                                     <Border BorderBrush="#FFCDDEDE" BorderThickness="3">
-                                        <Image Width="70" Height="70" Source="{ Binding Image }"></Image>
+                                        <Image Width="70" Height="70" Source="{ Binding Image1 }"></Image>
                                     </Border>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Width="21">ID:</TextBlock>
@@ -121,13 +122,17 @@
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="2" Grid.RowSpan="3" VerticalAlignment="Center" Margin="5">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Height="22">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                                         <Button x:Name="CountKoz" Click="CountKoz_Click">Изменить</Button>
-                                        <TextBlock x:Name="CountKozText" Text="1" TextAlignment="Center" Height="18" Width="55" Background="White"/>
+                                        <TextBlock x:Name="CountKozText" Text="{Binding size}" TextAlignment="Center" Height="18" Width="55" Background="White"/>
                                     </StackPanel>
-                                    <TextBlock x:Name="ProdUserPrice" VerticalAlignment="Center"></TextBlock>
+                                    <StackPanel Orientation="Horizontal" Margin="0,3,0,5">
+                                        <TextBlock Text="Стоимость: " TextAlignment="Center"/>
+                                        <TextBlock Text="{Binding SymCol}" TextAlignment="Center"/>
+                                        <TextBlock Text="₽" TextAlignment="Center"/>
+                                    </StackPanel>
                                     <TextBlock  Background="#3F1C1818" Visibility="{Binding visibilityCount}" TextAlignment="Center">Нет в наличии</TextBlock>
-                                    <Button x:Name="BtnDeleteKorz" Margin="0 10 0 0" Click="BtnDeleteKorz_Click" >Удалить из корзины</Button>
+                                    <Button x:Name="BtnDeleteKorz" Margin="0 5 0 0" Click="BtnDeleteKorz_Click" >Удалить из корзины</Button>
                                 </StackPanel>
                             </Grid>
                         </Border>

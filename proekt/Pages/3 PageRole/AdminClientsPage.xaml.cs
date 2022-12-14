@@ -26,12 +26,13 @@ namespace proekt.Pages._3_PageRole
         public AdminClientsPage()
         {
             InitializeComponent();
-            ListAdminProduct.Navigate(new AdminPage.ListAdminProduct());
+            ListAdminProduct.Navigate(new ListAdminProduct());
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Auth());
+            
         }
 
 
@@ -45,14 +46,14 @@ namespace proekt.Pages._3_PageRole
             ListAdminProduct.Navigate(new OrderAdminList());
         }
 
-        private void BtnCountry_Click(object sender, RoutedEventArgs e)
-        {
-            ListAdminProduct.Navigate(new CountrySupplierEditAdmin());
-        }
-
         private void BtnRole_Click(object sender, RoutedEventArgs e)
         {
             ListAdminProduct.Navigate(new UserEditAdminPage());
+        }
+
+        private void BtnCountry_Click(object sender, RoutedEventArgs e)
+        {
+            ListAdminProduct.Navigate(new AddSuppliers()); 
         }
     }
 }

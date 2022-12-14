@@ -16,6 +16,9 @@ using System.Windows.Shapes;
 using proekt.UserAuth;
 using System.Text.RegularExpressions;
 using System.Collections;
+using proekt.Pages._3_PageRole.AdminPage;
+using static System.Net.Mime.MediaTypeNames;
+using System.Data.Common;
 
 namespace proekt.Pages._3_PageRole.UserPage
 {
@@ -40,30 +43,30 @@ namespace proekt.Pages._3_PageRole.UserPage
 
             if (korz != null && korz != "" && korz != ",")
             {
-                string[] da14 = Regex.Matches(korz, @"\d+").OfType<Match>().Select(x => x.Value).ToArray();
-                bask = Regex.Matches(korz, @"\d+").OfType<Match>().Select(x => x.Value).ToArray();
+
+                string[] da14 = Regex.Matches(korz, @"\d+:").OfType<Match>().Select(x => x.Value).ToArray();
 
                 for (int i = 0; i < da14.Length; i++)
                 {
                     for (int f = 0; f < da15.Count; f++)
                     {
-                        if (Convert.ToInt32(da14[i]) == da15[f].ID)
+                        if (Convert.ToInt32(da14[i].Trim(new char[] { ':' })) == da15[f].ID)
                         {
-                            if (da15[f].IsDelete == true)
+                            if (da15[f].IsDelete == true || da15[f].Count <= 0)
                             {
-                                Match da7 = Regex.Match(Userid.basket, @"(.*)\D" + da15[f].ID + @"(\D.*)");
+                                Match da7 = Regex.Match(Userid.basket, @"(.*)," + da15[f].ID + @":\d+(,.*)");
                                 Userid.basket = Convert.ToString((Group)da7.Groups[1]) + Convert.ToString((Group)da7.Groups[2]);
                                 UserAuth.UserAuth.nameuser = Userid;
                                 Dbconnect.db.SaveChanges();
-                                break;
                             }
                             else {
                                 da16.Add(da15[f]);
-                                break;
                             }
+                            break;
                         }
                     }
                 }
+                bask = Regex.Matches(Userid.basket, @"\d+:").OfType<Match>().Select(x => x.Value).ToArray();
             }
             
 
@@ -86,33 +89,38 @@ namespace proekt.Pages._3_PageRole.UserPage
                 MaxCount = products.Count;
                 for (int i = 0; i < MaxCount; i++)
                 {
-                    AllPrice.Text = Convert.ToString(Convert.ToInt32(AllPrice.Text) + Convert.ToInt32(products.Where(x => x.ID == Convert.ToInt32(bask[i])).FirstOrDefault().Cast));
+                    var tovPrice = products.Where(x => x.ID == Convert.ToInt32(bask[i].Trim(new char[] { ':' }))).FirstOrDefault().Cast;
+                    string tovCount = Regex.Match(UserAuth.UserAuth.nameuser.basket, @"," + bask[i].Trim(new char[] { ':' }) + @":(\d+),").Groups[1].ToString();
+                    AllPrice.Text = Convert.ToString(Convert.ToInt32(AllPrice.Text) + Convert.ToInt32(tovPrice) * Convert.ToInt32(tovCount));
                 }
+                UserAuth.UserAuth.AllPrice = Convert.ToInt32(AllPrice.Text);
             }
 
-            // для себя | переделать через case 
-            if (CbUnit.SelectedIndex == 1)
+            switch (CbUnit.SelectedIndex)
             {
-                products = products.Where(x => x.UnitId == 1).ToList();
+                case 1:
+                    products = products.Where(x => x.UnitId == 1).ToList();
+                    break;
 
+                case 2:
+                    products = products.Where(x => x.UnitId == 4).ToList();
+                    break;
+
+                case 3:
+                    products = products.Where(x => x.UnitId == 2).ToList();
+                    break;
+
+                case 4:
+                    products = products.Where(x => x.UnitId == 3).ToList();
+                    break;
+
+                case 5:
+                    products = products.Where(x => x.UnitId == 5).ToList();
+                    break;
+
+                default:
+                    break;
             }
-            else if (CbUnit.SelectedIndex == 2)
-            {
-                products = products.Where(x => x.UnitId == 4).ToList();
-            }
-            else if (CbUnit.SelectedIndex == 3)
-            {
-                products = products.Where(x => x.UnitId == 2).ToList();
-            }
-            else if (CbUnit.SelectedIndex == 4)
-            {
-                products = products.Where(x => x.UnitId == 3).ToList();
-            }
-            else if (CbUnit.SelectedIndex == 5)
-            {
-                products = products.Where(x => x.UnitId == 5).ToList();
-            }
-            ///////////
 
 
             if (CbSort != null && CbSort.SelectedIndex == 1)
@@ -166,6 +174,7 @@ namespace proekt.Pages._3_PageRole.UserPage
                 if (RealCount == OneCount)
                 {
                     TxtRealCount.Text = (RealCount * ActualPages + OneCount).ToString();
+                    UserAuth.UserAuth.CountProd.CountTovar = (RealCount * ActualPages + OneCount).ToString();
 
                 }
                 else
@@ -178,8 +187,47 @@ namespace proekt.Pages._3_PageRole.UserPage
         }
 
         private void BntBuy_Click(object sender, RoutedEventArgs e)
-        {
+        {       
+            Dbconnect.db.Order.Add(new Order
+            {
+                UserId = UserAuth.UserAuth.nameuser.ID,
+                DataApp = DateTime.Now,
+                AllPrice = UserAuth.UserAuth.AllPrice,
+                StatusOrderID = 1,
+                Product = Convert.ToString(UserAuth.UserAuth.nameuser.basket),
+                //CountTovar = UserAuth.UserAuth.CountProd.CountTovar
+            });
 
+            User Userid = Dbconnect.db.User.Where(x => x.ID == UserAuth.UserAuth.nameuser.ID).FirstOrDefault();
+
+            /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ВАЖНО !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            var colpoxyyyje = Dbconnect.db.Product.ToList();
+            string[] number = Regex.Matches(Userid.basket, @"\d+:\d+").OfType<Match>().Select(x => x.Value).ToArray();
+
+            for (int i = 0; i < number.Length; i++)
+            {
+                Match temp = Regex.Match(number[i], @"(\d+):(\d+)");
+                for (int f = 0; f < colpoxyyyje.Count; f++)
+                {
+                    if (colpoxyyyje[f].ID == Convert.ToInt32(temp.Groups[1].ToString())) {
+                        Product colpoxyyyje2 = Dbconnect.db.Product.ToList().Find(x => x.ID == colpoxyyyje[f].ID);
+                        colpoxyyyje2.Count = colpoxyyyje2.Count - Convert.ToInt32(temp.Groups[2].ToString());
+                        Dbconnect.db.SaveChanges();
+                        break;
+                    }
+                }
+            }
+            */
+
+            UserAuth.UserAuth.nameuser.basket = ",";
+            Userid.basket = ",";
+
+            Dbconnect.db.SaveChanges();
+            MessageBox.Show("Заказ успешно добавлен!");
+                
+
+
+            NavigationService.Navigate(new MyOrder());
         }
 
         private void CbUnit_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -232,7 +280,7 @@ namespace proekt.Pages._3_PageRole.UserPage
             da1 = Dbconnect.db.Product.Where(x => x.ID == BtnProd.ID).ToList();
 
             User Userid = Dbconnect.db.User.Where(x => x.ID == UserAuth.UserAuth.nameuser.ID).FirstOrDefault();
-            Match da6 = Regex.Match(Userid.basket, @"(.*)\D" + (int)da1[0].ID + @"(\D.*)");
+            Match da6 = Regex.Match(Userid.basket, @"(.*)," + (int)da1[0].ID + @":\d+(,.*)");
 
             Userid.basket = Convert.ToString((Group)da6.Groups[1]) + Convert.ToString((Group)da6.Groups[2]);
 

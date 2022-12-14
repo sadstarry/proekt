@@ -57,29 +57,32 @@ namespace proekt.Pages._3_PageRole.UserPage
                 MaxCount = products.Count;
             }
 
-            // для себя | переделать через case 
-            if (CbUnit.SelectedIndex == 1)
-            {
-                products = products.Where(x => x.UnitId == 1).ToList();
 
-            }
-            else if (CbUnit.SelectedIndex == 2)
+            switch (CbUnit.SelectedIndex)
             {
-                products = products.Where(x => x.UnitId == 4).ToList();
+                case 1:
+                    products = products.Where(x => x.UnitId == 1).ToList();
+                    break;
+
+                case 2:
+                    products = products.Where(x => x.UnitId == 4).ToList();
+                    break;
+
+                case 3:
+                    products = products.Where(x => x.UnitId == 2).ToList();
+                    break;
+
+                case 4:
+                    products = products.Where(x => x.UnitId == 3).ToList();
+                    break;
+
+                case 5:
+                    products = products.Where(x => x.UnitId == 5).ToList();
+                    break;
+
+                default:
+                    break;
             }
-            else if (CbUnit.SelectedIndex == 3)
-            {
-                products = products.Where(x => x.UnitId == 2).ToList();
-            }
-            else if (CbUnit.SelectedIndex == 4)
-            {
-                products = products.Where(x => x.UnitId == 3).ToList();
-            }
-            else if (CbUnit.SelectedIndex == 5)
-            {
-                products = products.Where(x => x.UnitId == 5).ToList();
-            }
-            ///////////
 
 
             if (CbSort != null && CbSort.SelectedIndex == 1)
@@ -176,15 +179,15 @@ namespace proekt.Pages._3_PageRole.UserPage
             da1 = Dbconnect.db.Product.Where(x => x.ID == BtnProd.ID).ToList();
 
             User Userid = Dbconnect.db.User.Where(x => x.ID == UserAuth.UserAuth.nameuser.ID).FirstOrDefault();
-            if (Userid.basket == null || !Regex.IsMatch(Userid.basket, @"\D" + (int)da1[0].ID + @"\D"))
+            if (Userid.basket == null || !Regex.IsMatch(Userid.basket, @"," + (int)da1[0].ID + @":\d+,"))
             {
                 if (Userid.basket != null && Userid.basket != "")
                 {
-                    Userid.basket = Userid.basket + (int)da1[0].ID + ",";
+                    Userid.basket = Userid.basket + (int)da1[0].ID + ":1,";
                 }
                 else
                 {
-                    Userid.basket = "," + (int)da1[0].ID + ",";
+                    Userid.basket = "," + (int)da1[0].ID + ":1,";
                 }
                 UserAuth.UserAuth.nameuser = Userid;
                 Dbconnect.db.SaveChanges();

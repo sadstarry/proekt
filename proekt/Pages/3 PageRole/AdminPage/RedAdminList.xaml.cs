@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
+using System.IO;
 using proekt.Components;
 using proekt.UserAuth;
 
@@ -24,9 +26,13 @@ namespace proekt.Pages._3_PageRole.AdminPage
     /// </summary>
     public partial class RedAdminList : Page
     {
-        public RedAdminList()
+        Product Product;
+        public RedAdminList(Product product)
         {
             InitializeComponent();
+
+            Product = product;
+            DataContext = Product;
 
             var tovar = UserAuth.UserAuth.tovar;
 
@@ -51,6 +57,7 @@ namespace proekt.Pages._3_PageRole.AdminPage
                 prodid.Count = Convert.ToInt32(CountAddProd.Text.Trim());
                 prodid.UnitId = CbCountVisible.SelectedIndex + 1;
                 prodid.DateAdd = Convert.ToDateTime(DataAddProd.Text.Trim());
+                prodid.Image1 = Product.Image1;
 
                 Dbconnect.db.SaveChanges();
                 MessageBox.Show("Изменения успешно сохранены!");
@@ -59,8 +66,8 @@ namespace proekt.Pages._3_PageRole.AdminPage
             }
             catch (Exception)
             {
-                MessageBox.Show("Дата введена неверно!");
-            }
+                MessageBox.Show("Данные или картинка не корректра");
+            } 
         }
 
         private void DeleteAddProd_click(object sender, RoutedEventArgs e)
@@ -80,5 +87,15 @@ namespace proekt.Pages._3_PageRole.AdminPage
             NavigationService.Navigate(new ListAdminProduct());
         }
 
+        private void BtnAddImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog(){Filter = "*.png|*.png|*.jpeg|*.jpeg|*.jpg|*.jpg" };
+
+            if (openFile.ShowDialog().GetValueOrDefault())
+            {
+                Product.Image1 = File.ReadAllBytes(openFile.FileName);
+                Images.Source = new BitmapImage(new Uri(openFile.FileName));
+            }
+        }
     }
 }

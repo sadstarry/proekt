@@ -188,7 +188,7 @@ namespace proekt.Pages._3_PageRole.AdminPage
             var BtnProd = (sender as Button).DataContext as Product;
             UserAuth.UserAuth.tovar = Dbconnect.db.Product.Where(x => x.ID == BtnProd.ID).FirstOrDefault();
 
-            NavigationService.Navigate(new RedAdminList());
+            NavigationService.Navigate(new RedAdminList(UserAuth.UserAuth.tovar));
         }
 
         private void BntBuy_Click(object sender, RoutedEventArgs e)

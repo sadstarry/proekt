@@ -1,0 +1,50 @@
+﻿<Page x:Class="proekt.Pages._3_PageRole.AdminPage.SupplierAdd"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:proekt.Pages._3_PageRole.AdminPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SupplierAdd">
+
+    <Grid>
+        <Grid Background="White">
+            <ListView x:Name="ListProduct" d:ItemsSource="{d:SampleData}" Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="{Binding borderTich}" BorderBrush="#d1eefc" Padding="10" CornerRadius="5,5,5,5" Background="#d1eefc">
+
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Width="600" Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,7">
+                                        <TextBlock Width="100">Артикул записи</TextBlock>
+                                        <TextBlock Width="80">Продукт</TextBlock>
+                                        <TextBlock Width="170">Поставщик</TextBlock>
+                                        <TextBlock Width="80">Страна</TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding ID}" Width="100" />
+                                        <TextBlock Text="{Binding Product.Name}" Width="80"/>
+                                        <TextBlock Text="{Binding Suppliers.Name}" Width="170" />
+                                        <TextBlock Text="{Binding Country.Name}" Width="80" />
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="5">
+                                    <Button x:Name="BtnReadSupplier" Click="BtnReadSupplier_Click" Margin="0 10 0 0" >Редактировать</Button>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>

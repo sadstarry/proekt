@@ -22,6 +22,9 @@
           <Property Name="DataApp" Type="date" />
           <Property Name="StatusOrderID" Type="int" />
           <Property Name="Menedjet" Type="varchar" MaxLength="200" />
+          <Property Name="CountTovar" Type="ntext" />
+          <Property Name="AllPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Product" Type="ntext" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -35,7 +38,7 @@
           <Property Name="UnitId" Type="int" />
           <Property Name="Count" Type="int" />
           <Property Name="IsDelete" Type="bit" />
-          <Property Name="photo" Type="ntext" />
+          <Property Name="Image1" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -123,7 +126,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdOrder" Type="int" />
           <Property Name="IdProduct" Type="int" />
           <Property Name="Count" Type="int" />
@@ -406,6 +409,9 @@
           <Property Name="DataApp" Type="DateTime" Precision="0" />
           <Property Name="StatusOrderID" Type="Int32" />
           <Property Name="Menedjet" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CountTovar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AllPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Product" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="StatusOrder" Relationship="Self.FK_Order_StatusOrder" FromRole="Order" ToRole="StatusOrder" />
           <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
           <NavigationProperty Name="ZvOrder" Relationship="Self.FK_ZvOrder_Order" FromRole="Order" ToRole="ZvOrder" />
@@ -422,7 +428,7 @@
           <Property Name="UnitId" Type="Int32" />
           <Property Name="Count" Type="Int32" />
           <Property Name="IsDelete" Type="Boolean" />
-          <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image1" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Unit" Relationship="Self.FK_Product_Unit" FromRole="Product" ToRole="Unit" />
           <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Product" FromRole="Product" ToRole="Supply" />
           <NavigationProperty Name="SupProdCountry" Relationship="Self.FK_SupProdCountry_Product" FromRole="Product" ToRole="SupProdCountry" />
@@ -529,7 +535,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdOrder" Type="Int32" />
           <Property Name="IdProduct" Type="Int32" />
           <Property Name="Count" Type="Int32" />
@@ -823,6 +829,9 @@
                 <ScalarProperty Name="DataApp" ColumnName="DataApp" />
                 <ScalarProperty Name="StatusOrderID" ColumnName="StatusOrderID" />
                 <ScalarProperty Name="Menedjet" ColumnName="Menedjet" />
+                <ScalarProperty Name="CountTovar" ColumnName="CountTovar" />
+                <ScalarProperty Name="AllPrice" ColumnName="AllPrice" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -837,7 +846,7 @@
                 <ScalarProperty Name="UnitId" ColumnName="UnitId" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="Image1" ColumnName="Image1" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

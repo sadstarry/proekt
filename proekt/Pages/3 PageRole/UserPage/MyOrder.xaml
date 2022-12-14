@@ -11,116 +11,71 @@
     <Grid>
         <Grid Background="White">
             <Grid.RowDefinitions>
-                <RowDefinition Height="48*"/>
                 <RowDefinition Height="373*"/>
                 <RowDefinition Height="29*"/>
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5,5,5,5">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock  Margin="0 10 0 5">Ед. изм</TextBlock>
-                    <ComboBox SelectedIndex="0" Width="80"  Margin="5 0 0 0" Height="20"  SelectionChanged="CbUnit_SelectionChanged"  x:Name="CbUnit" >
-                        <ComboBoxItem>Все</ComboBoxItem>
-                        <ComboBoxItem>Штука</ComboBoxItem>
-                        <ComboBoxItem>Граммы</ComboBoxItem>
-                        <ComboBoxItem>Литры</ComboBoxItem>
-                        <ComboBoxItem>Килограммы</ComboBoxItem>
-                        <ComboBoxItem>Комплект</ComboBoxItem>
-                    </ComboBox>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="10 10 0 5" FontFamily="Century" Width="81">Сортировать:</TextBlock>
-                    <ComboBox SelectedIndex="0" Width="47"  Margin="5 0 0 0" Height="20" SelectionChanged="CbSort_SelectionChanged"  x:Name="CbSort">
-                        <ComboBoxItem>Без сортировки</ComboBoxItem>
-                        <ComboBoxItem>Наименование</ComboBoxItem>
-                        <ComboBoxItem>Дата добавления</ComboBoxItem>
-                    </ComboBox>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <TextBox  Margin="10 5 0 5" Height="20"  x:Name="TbSearch" TextChanged="TbSearch_TextChanged"  Width="84"   FontFamily="Bahnschrift SemiBold Condensed"></TextBox>
-                    <!--<Image Source="C:\Users\MSSI\source\repos\YP22\YP22\Resourse\лупа1.png" Height="15"></Image>-->
-                </StackPanel>
-
-                <TextBlock Margin="5 10 0 5" > Выводить по:</TextBlock>
-                <ComboBox Margin="5 0 0 5" x:Name="CbCountVisible" Width="100" Height="20" SelectedIndex="0" SelectionChanged="CbCountVisible_SelectionChanged">
-                    <ComboBoxItem>Все</ComboBoxItem>
-                    <ComboBoxItem>10</ComboBoxItem>
-                    <ComboBoxItem>50</ComboBoxItem>
-                    <ComboBoxItem>200</ComboBoxItem>
-                </ComboBox>
-            </StackPanel>
-            <ListView x:Name="ListProduct" d:ItemsSource="{d:SampleData}" Grid.Row="1" >
+            <ListView x:Name="MyOrderUser" d:ItemsSource="{d:SampleData}" Grid.Row="0" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderThickness="{Binding borderTich}" BorderBrush="#d1eefc" Padding="10" CornerRadius="5,5,5,5" Background="#d1eefc">
-
-
-                            <Grid>
+                            <Grid Width="700">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="5*"></ColumnDefinition>
-                                    <ColumnDefinition Width="5*"></ColumnDefinition>
-                                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*"></RowDefinition>
-                                    <RowDefinition Height="1*"></RowDefinition>
-                                    <RowDefinition Height="1*"></RowDefinition>
-                                </Grid.RowDefinitions>
 
-                                <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Margin="8">
-                                    <Border BorderBrush="#FFCDDEDE" BorderThickness="3">
-                                        <Image Width="70" Height="70" Source="{ Binding Image }"></Image>
-                                    </Border>
-                                </StackPanel>
-                                <StackPanel Grid.Row="0" Grid.Column="1">
-                                    <TextBlock Text="{Binding Name}"></TextBlock>
-                                </StackPanel>
-                                <StackPanel Width="500" Grid.Row="1" Grid.Column="1">
-
-                                    <TextBlock TextWrapping="Wrap" Text="{Binding Discription}"></TextBlock>
-
-
-                                    <StackPanel Orientation="Horizontal">
-
-                                        <TextBlock Width="71">Стоимость:</TextBlock>
-                                        <TextBlock Text="{Binding Cast}"></TextBlock>
+                                <StackPanel HorizontalAlignment="Left" Grid.Column="0" Margin="8,8,8,8" Width="395" Orientation="Horizontal" Grid.ColumnSpan="2">
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="ID:" Width="30" />
+                                        <TextBlock Text="{Binding ID}" />
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Width="74">В наличии:</TextBlock>
-                                        <TextBlock Text="{Binding Count}" Width="117"></TextBlock>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="Дата заказа:" Width="80" />
+                                        <TextBlock Text="{Binding DataApp , StringFormat= dd.MM.yy }" />
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Width="56">Ед.изм:</TextBlock>
-                                        <TextBlock Text="{Binding Unit.Name}" RenderTransformOrigin="0.5,0.5" Width="137">
-                                            <TextBlock.RenderTransform>
-                                                <TransformGroup>
-                                                    <ScaleTransform/>
-                                                    <SkewTransform/>
-                                                    <RotateTransform Angle="0.028"/>
-                                                    <TranslateTransform/>
-                                                </TransformGroup>
-                                            </TextBlock.RenderTransform></TextBlock>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="Общая стоимость:" Width="105" />
+                                        <TextBlock Text="{Binding AllPrice}" />
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Width="145">Дата добавления товара:</TextBlock>
-                                        <TextBlock Text="{Binding DateAdd , StringFormat= dd.MM.yy }"></TextBlock>
-                                    </StackPanel>
+
                                 </StackPanel>
 
-                                <StackPanel Grid.Column="2" Grid.RowSpan="3" VerticalAlignment="Center" Margin="5">
-                                    <TextBlock  Background="#3F1C1818" Visibility="{Binding visibilityCount}" TextAlignment="Center">Cтатус</TextBlock>
+                                <StackPanel  Grid.Column="1" Margin="5,0,5,0" Height="60" Width="200" HorizontalAlignment="Right">
+                                    <!--<Frame Name="MMMM" BorderThickness="0" Source="ProdListOrder.xaml" /> -->
+                                    <!-- 
+                                        <ListView x:Name="MyProductZakaz" d:ItemsSource="{d:SampleData}" Grid.Row="1" >
+                                            <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Product.ID}" Width="20" Margin="5,0,0,0" FontSize="8"/>
+                                                    <TextBlock Text="{Binding Product.Name}" Width="70" FontSize="8"/>
+                                                    <TextBlock Text="{Binding Count}" Width="30" FontSize="8"/>
+                                                    <TextBlock Text="111" FontSize="8"/>
+                                                    <TextBlock Text="₽" Margin="0,0,5,0" FontSize="8"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                    -->
                                 </StackPanel>
+
+                                <StackPanel Grid.Column="2" Margin="5,0,5,0">
+                                    <TextBlock TextAlignment="Center" Visibility="{Binding menegder}" Text="{Binding Menedjet}" Margin="0,0,0,3" />
+                                    <TextBlock Background="#791e8700" Text="{Binding StatusOrder.Name}" TextAlignment="Center"/>
+                                    <Button x:Name="BtnReadSupplier" Click="BtnReadSupplier_Click" Margin="0 10 0 0" IsEnabled="{Binding statusord}">Редактировать</Button>
+                                </StackPanel>
+
                             </Grid>
                         </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal" Grid.Row="2" Width="204" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal" Grid.Row="1" Width="204" VerticalAlignment="Center">
                 <Button Height="20" x:Name="BtnLeft" Click="BtnLeft_Click"  Margin="0 0 10 0" Content='←'/>
-                <TextBlock TextAlignment="Center" x:Name="TxtRealCount" Margin="0 0 10 0" Width="60" ></TextBlock>
-                <TextBlock Margin="0 0 10 0" Width="14">из</TextBlock>
-                <TextBlock TextAlignment="Center" x:Name="TxtMaxCount" Margin="0 0 10 0" Width="60"></TextBlock>
+                <TextBlock TextAlignment="Center" x:Name="TxtRealCount" Margin="0 0 10 0" Width="60" >1</TextBlock>
+                <TextBlock Margin="0 0 10 0" Width="14"> из</TextBlock>
+                <TextBlock TextAlignment="Center" x:Name="TxtMaxCount" Margin="0 0 10 0" Width="60">2</TextBlock>
                 <Button HorizontalContentAlignment="Right" Height="20" x:Name="BtnRight" Click="BtnRight_Click" Content="→"/>
             </StackPanel>
         </Grid>

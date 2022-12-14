@@ -133,8 +133,11 @@
     <Compile Include="Pages\3 PageRole\AdminPage\AddProductAdminPage.xaml.cs">
       <DependentUpon>AddProductAdminPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\3 PageRole\AdminPage\CountrySupplierEditAdmin.xaml.cs">
-      <DependentUpon>CountrySupplierEditAdmin.xaml</DependentUpon>
+    <Compile Include="Pages\3 PageRole\AdminPage\AddSuppliers.xaml.cs">
+      <DependentUpon>AddSuppliers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\3 PageRole\AdminPage\Colichestvo.xaml.cs">
+      <DependentUpon>Colichestvo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\3 PageRole\AdminPage\ListAdminProduct.xaml.cs">
       <DependentUpon>ListAdminProduct.xaml</DependentUpon>
@@ -145,8 +148,14 @@
     <Compile Include="Pages\3 PageRole\AdminPage\RedAdminList.xaml.cs">
       <DependentUpon>RedAdminList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\3 PageRole\AdminPage\RedOrder.xaml.cs">
+      <DependentUpon>RedOrder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\3 PageRole\AdminPage\RedUserAdmin.xaml.cs">
       <DependentUpon>RedUserAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\3 PageRole\AdminPage\SupplierAdd.xaml.cs">
+      <DependentUpon>SupplierAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\3 PageRole\AdminPage\UserEditAdminPage.xaml.cs">
       <DependentUpon>UserEditAdminPage.xaml</DependentUpon>
@@ -157,6 +166,9 @@
     <Compile Include="Pages\3 PageRole\SupplierClientsPage.xaml.cs">
       <DependentUpon>SupplierClientsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\3 PageRole\SupplierPage\AddForm.xaml.cs">
+      <DependentUpon>AddForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\3 PageRole\UserClientsPage.xaml.cs">
       <DependentUpon>UserClientsPage.xaml</DependentUpon>
     </Compile>
@@ -165,6 +177,9 @@
     </Compile>
     <Compile Include="Pages\3 PageRole\UserPage\MyOrder.xaml.cs">
       <DependentUpon>MyOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\3 PageRole\UserPage\ProdListOrder.xaml.cs">
+      <DependentUpon>ProdListOrder.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\3 PageRole\UserPage\ProductList.xaml.cs">
       <DependentUpon>ProductList.xaml</DependentUpon>
@@ -198,7 +213,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\3 PageRole\AdminPage\CountrySupplierEditAdmin.xaml">
+    <Page Include="Pages\3 PageRole\AdminPage\AddSuppliers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\3 PageRole\AdminPage\Colichestvo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,7 +233,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\3 PageRole\AdminPage\RedOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\3 PageRole\AdminPage\RedUserAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\3 PageRole\AdminPage\SupplierAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,6 +257,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\3 PageRole\SupplierPage\AddForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\3 PageRole\UserClientsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -239,6 +270,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\3 PageRole\UserPage\MyOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\3 PageRole\UserPage\ProdListOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -300,8 +335,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pages\3 PageRole\ManagerPage\" />
-    <Folder Include="Pages\3 PageRole\SupplierPage\" />
+    <Folder Include="Pages\3 PageRole\Menejer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Components\Model1.Context.tt">

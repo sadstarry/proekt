@@ -72,7 +72,7 @@
 
                                 <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Margin="8">
                                     <Border BorderBrush="#FFCDDEDE" BorderThickness="3">
-                                        <Image Width="70" Height="70" Source="{ Binding Image }"></Image>
+                                        <Image Width="70" Height="70" Source="{ Binding Image1 }"></Image>
                                     </Border>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Width="21">ID: </TextBlock>

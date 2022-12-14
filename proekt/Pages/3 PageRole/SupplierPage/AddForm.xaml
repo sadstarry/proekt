@@ -1,51 +1,41 @@
-﻿<Page x:Class="proekt.Pages._3_PageRole.AdminPage.AddProductAdminPage"
+﻿<Page x:Class="proekt.Pages._3_PageRole.SupplierPage.AddForm"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:proekt.Pages._3_PageRole.AdminPage"
+      xmlns:local="clr-namespace:proekt.Pages._3_PageRole.SupplierPage"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddProductAdminPage">
+      Title="AddForm">
 
     <Grid Background="#d1eefc">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Margin="15">
             <StackPanel Height="32" Margin="5" Orientation="Horizontal" HorizontalAlignment="Center" >
-                <TextBlock TextAlignment="Center" Width="193" FontSize="18" VerticalAlignment="Center" Height="28" FontFamily="Comic Sans MS"><Run Text="Добавить продукт" FontFamily="Bahnschrift Light"/></TextBlock>
+                <TextBlock TextAlignment="Center" Width="193" FontSize="18" VerticalAlignment="Center" Height="28" FontFamily="Comic Sans MS"><Run Text="Добавить поставку" FontFamily="Bahnschrift Light"/></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <TextBlock Width="94" FontFamily="Comic Sans MS" ><Run Text="Наименование"/></TextBlock>
-                <TextBox x:Name="TbNameAddProd" RenderTransformOrigin="0.5,0.5" Width="171" />
+                <TextBlock Width="104" FontFamily="Comic Sans MS" ><Run Text="Наименование"/></TextBlock>
+                <TextBox x:Name="TbNameAddProd" RenderTransformOrigin="0.5,0.5" Width="172" />
 
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <TextBlock Width="94" FontFamily="Comic Sans MS"><Run Text="Описание"/></TextBlock>
+                <TextBlock Width="104" FontFamily="Comic Sans MS"><Run Text="Количесвтво"/></TextBlock>
                 <TextBox x:Name="DiscriptionsAddProd" Width="172" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <TextBlock Width="94" FontFamily="Comic Sans MS"><Run Text="Цена"/></TextBlock>
+                <TextBlock Width="104" FontFamily="Comic Sans MS"><Run Text="Закупочная цена"/></TextBlock>
                 <TextBox x:Name="PriceAddProd" Width="172" />
             </StackPanel>
 
+
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <TextBlock Width="94" FontFamily="Comic Sans MS"><Run Text="Количество"/></TextBlock>
+                <TextBlock Width="128" FontFamily="Comic Sans MS"><Run Text="Общая сумма закупки"/></TextBlock>
                 <TextBox x:Name="CountAddProd" Width="172" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5" Width="263">
-                <TextBlock Width="89" FontFamily="Comic Sans MS"><Run Text="Ед.Измерения"/></TextBlock>
-                <ComboBox Margin="5 0 0 5" x:Name="CbCountVisible" Width="100" Height="20" SelectedIndex="0" >
-                    <ComboBoxItem>Штука</ComboBoxItem>
-                    <ComboBoxItem>Литры</ComboBoxItem>
-                    <ComboBoxItem>Килограммы</ComboBoxItem>
-                    <ComboBoxItem>Граммы</ComboBoxItem>
-                    <ComboBoxItem>Комлекты</ComboBoxItem>
-                </ComboBox>
-            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <Image Source="{Binding Image1}" x:Name="Images" Width="97" Height="67">
-
-                </Image>
-                <Button x:Name="BtnAddImage" Click="BtnAddImage_Click" Height="24">Добавить фото</Button>
+                <Button>
+                    Указать перечень продуктов
+                </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                 <Button Click="AddProd_click" Content="Добавить" Margin="5" Width="150" FontFamily="Comic Sans MS"/>

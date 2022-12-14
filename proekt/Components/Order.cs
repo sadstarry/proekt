@@ -25,6 +25,9 @@ namespace proekt.Components
         public Nullable<System.DateTime> DataApp { get; set; }
         public Nullable<int> StatusOrderID { get; set; }
         public string Menedjet { get; set; }
+        public string CountTovar { get; set; }
+        public Nullable<decimal> AllPrice { get; set; }
+        public string Product { get; set; }
     
         public virtual StatusOrder StatusOrder { get; set; }
         public virtual User User { get; set; }

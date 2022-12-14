@@ -1,4 +1,6 @@
-﻿using proekt.Components;
+﻿using Microsoft.Win32;
+using proekt.Components;
+using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,17 +17,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.Entity;
+
 
 namespace proekt.Pages._3_PageRole.AdminPage
 {
     /// <summary>
     /// Логика взаимодействия для AddProductAdminPage.xaml
     /// </summary>
+    /// 
     public partial class AddProductAdminPage : Page
     {
+        
         public AddProductAdminPage()
         {
             InitializeComponent();
+
         }
 
 
@@ -36,11 +43,11 @@ namespace proekt.Pages._3_PageRole.AdminPage
             string Prise = PriceAddProd.Text.Trim();
             string Counts = CountAddProd.Text.Trim();
             int Unit = CbCountVisible.SelectedIndex;
-            //string image = TbPhoneReg.Text.Trim();
-
+            try
+            {
             if (Name.Length > 0 && Descriptions.Length > 0 && Prise.Length > 0 && Counts.Length > 0)
             {
-                
+
                 Dbconnect.db.Product.Add(new Product
                 {
                     Name = Name,
@@ -57,9 +64,14 @@ namespace proekt.Pages._3_PageRole.AdminPage
 
                 NavigationService.Navigate(new ListAdminProduct());
             }
-            else 
+            else
             {
                 MessageBox.Show("Все поля обязательны для заполнения!");
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Вы что-то ввели не правильно!");
             }
         }
 
@@ -76,6 +88,21 @@ namespace proekt.Pages._3_PageRole.AdminPage
             PriceAddProd.Text = "";
             CountAddProd.Text = "";
             CbCountVisible.SelectedIndex = 0;
+        }
+
+        private void BtnAddImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog()
+            {
+                Filter = "*.png|*.png|*.jpeg|*.jpeg|*.jpg|*.jpg" /*сначала наименование в проводнике потом сам формат*/
+            };
+            //string name;
+
+            if (openFile.ShowDialog().GetValueOrDefault())
+            {
+                //Product.Image1 = File.ReadAllBytes(openFile.FileName);
+                //Images.Source = new BitmapImage(new Uri(openFile.FileName));
+            }
         }
     }
 }

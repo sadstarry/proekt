@@ -13,16 +13,31 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace proekt.Pages._3_PageRole.AdminPage
+namespace proekt.Pages._3_PageRole.SupplierPage
 {
     /// <summary>
-    /// Логика взаимодействия для CountrySupplierEditAdmin.xaml
+    /// Логика взаимодействия для AddForm.xaml
     /// </summary>
-    public partial class CountrySupplierEditAdmin : Page
+    public partial class AddForm : Page
     {
-        public CountrySupplierEditAdmin()
+        public AddForm()
         {
             InitializeComponent();
+        }
+
+        private void AddProd_click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClearAddProd_click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NextAddProd_click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

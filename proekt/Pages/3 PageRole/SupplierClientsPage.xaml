@@ -28,24 +28,12 @@
                 <Button Margin="5" x:Name="BtnExit" Width="150" HorizontalAlignment="Right" Click="BtnExit_Click">Выйти из аккаунта</Button>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,35,0,0">
-                <Button x:Name="BtnProduct" Click="BtnProduct_Click" Margin="0,0,0,10">Продукция</Button>
-                <Button x:Name="BtnAllAdmiss" Click="BtnAllAdmiss_Click" Margin="0,0,0,10">
-                    <TextBlock> История <LineBreak/> поставок</TextBlock>
-                </Button>
-                <!--<Button x:Name="BtnCountry" Click="BtnCountry_Click" Margin=" 0 0 0 10">Поставщики</Button>-->
-                <Button x:Name="BtnNewProduct" Click="BtnNewProduct_Click">
-                    <TextBlock>
-                        Поставка
-                        <LineBreak/>
-                        товара
-                    </TextBlock>
-                </Button>
-                <TextBlock FontSize="11" FontFamily="Comic Sans MS" VerticalAlignment="Bottom" HorizontalAlignment="Center"> @sadstarry 2022</TextBlock>
+                <Button x:Name="BtnProduct" Click="BtnProduct_Click" Margin="0,0,0,10">Поставки</Button>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="22,0,23,384">
                 <Image Source="..\..\Resurs\logo.png" Height="32" Width="46"></Image>
             </StackPanel>
-            <!-- <Frame x:Name="MyFrame" Grid.Column="1" Grid.RowSpan="2" Margin="0,35,0,0"/> -->
+            <Frame x:Name="MyFrame" Grid.Column="1" Grid.RowSpan="2" Margin="0,35,0,0"/> 
         </Grid>
     </Grid>
 </Page>

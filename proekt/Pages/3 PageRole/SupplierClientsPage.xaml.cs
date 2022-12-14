@@ -1,4 +1,5 @@
-﻿using System;
+﻿using proekt.Pages._3_PageRole.SupplierPage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,17 +33,7 @@ namespace proekt.Pages._3_PageRole
 
         private void BtnProduct_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void BtnAllAdmiss_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnNewProduct_Click(object sender, RoutedEventArgs e)
-        {
-
+            MyFrame.Navigate(new SupplierPage.AddForm());
         }
     }
 }

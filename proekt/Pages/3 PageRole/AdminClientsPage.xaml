@@ -48,6 +48,9 @@
                 <Button Margin="5" x:Name="BtnCountry" Click="BtnCountry_Click">
                     <TextBlock  TextAlignment="Center"> Страны <LineBreak/> поставщики</TextBlock>
                 </Button>
+                <Button Margin="5" x:Name="BtnCountry1" Click="BtnCountry_Click">
+                    <TextBlock  TextAlignment="Center"> Добавить <LineBreak/> поставщика</TextBlock>
+                </Button>
                 <TextBlock FontSize="11" FontFamily="Comic Sans MS" VerticalAlignment="Bottom" HorizontalAlignment="Center"> @sadstarry 2022</TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="22,0,23,384">
